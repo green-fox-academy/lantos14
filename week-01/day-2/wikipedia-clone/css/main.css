@@ -1,0 +1,28 @@
+/* table */
+
+table {
+    display: table;
+    text-align: right;
+    width: 260px;
+    height: 300px;
+    float: right;
+    border: 1px solid black;
+    background-color: #f8f9fa;
+    border-collapse: collapse;
+}
+
+th {
+    text-align: center;
+    background-color: #e6e6fa;
+}
+
+td {
+    display: table-cell;
+    padding: 5px;
+    text-align: left;
+    vertical-align: top;
+}
+
+img {
+    align-items: center;
+}
