@@ -1,5 +1,4 @@
 [My other repositories]
-[hello-world repo]
-(https://github.com/lantos14/hello-world)
-[patchwork repo]
-(https://github.com/lantos14/patchwork)
+
+1. [hello-world repo] (https://github.com/lantos14/hello-world)
+2. [patchwork repo] (https://github.com/lantos14/patchwork)
