@@ -8,7 +8,7 @@ console.log(13 + 22);
 
 // Print the result of 13 substracted from 22
 
-console.log(13 - 22);
+console.log(22 - 13);
 
 // Print the result of 22 multiplied by 13
 
