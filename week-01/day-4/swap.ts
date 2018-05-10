@@ -14,3 +14,11 @@ b = c
 
 console.log(a);
 console.log(b);
+
+/* I've checked online the solution below. 
+It works but I'd rather go with my solution, I understand mine better.
+
+b = [a, a = b][0];
+
+console.log(a);
+console.log(b); */
