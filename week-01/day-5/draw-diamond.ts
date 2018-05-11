@@ -1,6 +1,8 @@
 'use strict';
 
-let lineCount: number = 6;
+export {};
+
+let lineCount: number = 7;
 
 // Write a program that draws a
 // diamond like this:
@@ -16,26 +18,32 @@ let lineCount: number = 6;
 // The diamond should have as many lines as lineCount is
 
 // upper side - pyramid
-for (let i: number = 0; i <= lineCount; i++){
+for (let i: number = 0; i <= lineCount/2-1; i++){
   let output: string = '';
 
       // space
 
-      for (let j: number = 0; j < lineCount-i; j++){
+      for (let j: number = 0; j < lineCount/2-i; j++){
           output = output + ' ';
       }
 
       // star
-      
-      for (let k: number = 1; k <= (i*2+1); k++){
+      if (lineCount % 2 === 1) {
+        for (let k: number = 1; k <= (i*2+1); k++){
           output = output + '*';
+        } 
+      }
+      if (lineCount % 2 === 0) {
+        for (let k: number = 0; k <= (i*2); k++){
+          output = output + '*';
+        }
       }
 
   console.log (output);
 }
-// console.log ('\n')
+// console.log('---------');
 // bottom side - flipped pyramid
-for (let i: number = 0; i < lineCount; i++){
+for (let i: number = 0; i < lineCount/2; i++){
   let output: string = '';
 
   // loop for spaces
@@ -45,9 +53,16 @@ for (let i: number = 0; i < lineCount; i++){
   }
   
   // loop for star
-
-  for (let k: number = 1; k < (lineCount-i)*2; k++){
-    output = output + '*';
+  
+  if (lineCount % 2 === 0) {
+    for (let k: number = 0; k < (lineCount/2-i)*2-1; k++){
+      output = output + '*';
+    }
+  }
+  if (lineCount % 2 === 1) {
+    for (let k: number = 0; k < (lineCount/2-i)*2; k++){
+      output = output + '*';
+    }
   }
 console.log(output);
 }
