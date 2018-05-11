@@ -18,12 +18,16 @@ let lineCount: number = 6;
 // upper side - pyramid
 for (let i: number = 0; i <= lineCount; i++){
   let output: string = '';
+
       // space
+
       for (let j: number = 0; j < lineCount-i; j++){
           output = output + ' ';
       }
+
       // star
-      for (let k: number = 0; k <= (i*2+1); k++){
+      
+      for (let k: number = 1; k <= (i*2+1); k++){
           output = output + '*';
       }
 
@@ -42,8 +46,8 @@ for (let i: number = 0; i < lineCount; i++){
   
   // loop for star
 
-  for (let k: number = 0; k < lineCount-i; k++){
-    output = output + '*' + '*';
+  for (let k: number = 1; k < (lineCount-i)*2; k++){
+    output = output + '*';
   }
 console.log(output);
 }
