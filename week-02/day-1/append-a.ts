@@ -4,10 +4,9 @@
 
 const animals = ['kuty', 'macsk', 'cic'];
 
-animals.forEach (function (item: string) {
-  item = `${item}a`;
-  console.log (item)
+animals.forEach (function (item: string, index: number) {
+  animals[index] = `${item}a`;
 })
 
-
+console.log (animals);
 
