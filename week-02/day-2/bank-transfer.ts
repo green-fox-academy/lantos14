@@ -38,8 +38,6 @@ function transferAmount (accounts, fromAccount, toAccount, amount) {
     }
   }
 }
-  
-console.log (accounts);
 
 transferAmount(accounts, 43546731, 23456311, 500.0)
 
