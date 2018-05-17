@@ -11,20 +11,11 @@ const ctx = canvas.getContext('2d');
 
 // Create a loop that fills the canvas with rainbow colored squares.
 
-// random color function
-function getRandomColor() {
-  let rainbow = ['red','orange','yellow','green','teal','blue','violet'];
-  let color = '';
-    color = rainbow[Math.floor(Math.random() * 6)];
-  return color;
-}
-
 function rainbowBox () {
-  for (let i:number = 1; i < 160; i++) {
-    ctx.fillStyle = getRandomColor();
+  for (let i:number = 1; i < 150; i++) {
+    ctx.fillStyle = `hsl(${360-i*2}, ${0+i}%, 50%)`;
     ctx.fillRect(300-((600-i*4)/2), 200-((600-i*4)/2), 600-i*4, 600-i*4);
   }
 }
 
 rainbowBox ();
-
