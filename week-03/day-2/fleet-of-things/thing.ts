@@ -1,12 +1,20 @@
 class Thing {
-  public name: string;
-  public completed: boolean;
+  private name: string;
+  private completed: boolean;
 
   constructor(name: string){
       this.name = name;
   }
   public complete() {
       this.completed = true;
+  }
+
+  public getName() {
+      return this.name;
+  }
+
+  public getCompleted() {
+      return this.completed;
   }
 }
 
