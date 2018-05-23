@@ -1,4 +1,4 @@
-class blogSpot {
+export class blogSpot {
   authorName: string;
   title: string;
   text: string;
