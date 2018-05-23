@@ -1,4 +1,4 @@
-class Sharpie {
+export class Sharpie {
   color: string;
   width: number;
   inkAmount: number;
@@ -12,15 +12,3 @@ class Sharpie {
     this.inkAmount--;
   }
 }
-
-// testing section
-
-let testSharpie = new Sharpie ('Red', 100)
-
-console.log (testSharpie);
-
-testSharpie.use();
-
-console.log (testSharpie);
-
-export {Sharpie}
