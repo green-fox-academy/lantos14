@@ -1,4 +1,4 @@
-class Animal {
+export class Animal {
   hunger: number = 50;
   thirst: number = 50;
   
@@ -15,17 +15,3 @@ class Animal {
     this.thirst++;
   }
 }
-
-// testing section
-let whiteTiger = new Animal;
-
-console.log (whiteTiger);
-
-whiteTiger.eat();
-whiteTiger.drink();
-
-console.log (whiteTiger);
-
-whiteTiger.play();
-
-console.log (whiteTiger);
