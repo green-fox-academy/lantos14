@@ -22,3 +22,5 @@ console.log (testSharpie);
 testSharpie.use();
 
 console.log (testSharpie);
+
+export {Sharpie}
