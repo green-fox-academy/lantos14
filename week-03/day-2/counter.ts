@@ -13,7 +13,7 @@ class Counter {
   }
   
   public get() {
-    console.log(`${this.countNum}`);
+    console.log(this.countNum);
   }
 
   public reset() {
@@ -29,8 +29,10 @@ awesomeCounter.get();
 
 awesomeCounter.add(10);
 awesomeCounter.add();
+
 awesomeCounter.get();
 
 awesomeCounter.reset();
+
 awesomeCounter.get();
 
