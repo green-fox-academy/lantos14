@@ -5,15 +5,12 @@
 // and so on. Define a recursive fibonacci(n) method that returns the nth
 // fibonacci number, with n=0 representing the start of the sequence.
 
-function fibonacci (n: number, nth: number) {
-  if (nth === 1) {
-    return 0;
-  } else if (nth === 2 || nth === 3) {
+function fibonacci (n: number) {
+  if (n <= 1) {
     return 1;
+    } else {
+      return fibonacci(n - 1) + fibonacci(n - 2);
     }
-    else {
-    return n + fibonacci(n, nth-1) + fibonacci(n, nth-2);
-  }
 }
-// only works with n = 0;
-console.log (fibonacci (0, 9));
+
+console.log (fibonacci (9));
