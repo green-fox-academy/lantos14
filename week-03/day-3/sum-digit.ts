@@ -2,8 +2,6 @@
 // Note that mod (%) by 10 yields the rightmost digit (126 % 10 is 6), while 
 // divide (/) by 10 removes the rightmost digit (126 / 10 is 12).
 
-let result: number = 0;
-
 function sumDigits (n: number): number {
   if (n < 1) {
     return n;
@@ -12,4 +10,4 @@ function sumDigits (n: number): number {
   }
 }
 
-console.log (sumDigits(34));
+console.log (sumDigits(3333));
