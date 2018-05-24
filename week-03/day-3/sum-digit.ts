@@ -6,11 +6,10 @@ let result: number = 0;
 
 function sumDigits (n: number): number {
   if (n < 1) {
-    return result;
+    return n;
   } else {
-    result += n % 10;
-    return sumDigits(Math.floor(n / 10));
+    return (n % 10) + sumDigits(Math.floor(n / 10));
   }
 }
 
-console.log (sumDigits(334));
+console.log (sumDigits(34));
