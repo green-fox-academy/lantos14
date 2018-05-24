@@ -3,26 +3,16 @@
 const canvas = document.querySelector('.main-canvas') as HTMLCanvasElement;
 const ctx = canvas.getContext('2d');
 
-function drawRects (x, y, size, count) {
-// basecase
-  if (count === 1) {
-  } else {
-// top
-  ctx.strokeStyle = 'black'
-  ctx.strokeRect(x / 3, 0, size, size);
-// right
-  ctx.strokeStyle = 'black'
-  ctx.strokeRect(x * 2 / 3, y / 3, size, size);
-// bottom
-  ctx.strokeStyle = 'black'
-  ctx.strokeRect(x / 3, y * 2 / 3, size, size);
-// left
-  ctx.strokeStyle = 'black'
-  ctx.strokeRect(0, y / 3, size, size);
-
-// changes
-  count--
-  drawRects (x + size, y + size, size / 3, count);
+function baseRects (x: number, y: number, size: number, Count: number) {
+  ctx.strokeStyle = 'purple';
+  ctx.strokeRect(x, y + size / 3, size, size / 3); 
+  ctx.strokeRect(x + size / 3, y, size / 3, size);
+  if (Count > 1) {
+    baseRects (x, y + size / 3, size / 3, Count -1);
+    baseRects (x + size / 3, y, size / 3, Count - 1);
+    baseRects (x + size / 3, y + size * 2 / 3, size / 3, Count - 1);
+    baseRects (x + size * 2 / 3, y + size / 3, size / 3, Count -1);
   }
 }
-drawRects (600, 600, 200, 6);
+
+baseRects(0, 0, 900, 5);
