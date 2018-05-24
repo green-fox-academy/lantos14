@@ -15,5 +15,5 @@ function fibonacci (n: number, nth: number) {
     return n + fibonacci(n, nth-1) + fibonacci(n, nth-2);
   }
 }
-
+// only works with n = 0;
 console.log (fibonacci (0, 9));
