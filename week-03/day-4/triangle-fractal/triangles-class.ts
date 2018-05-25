@@ -30,7 +30,7 @@ class triangleSwarm {
     ctx.stroke();
     ctx.lineTo (startX,startY);
     ctx.strokeStyle = 'black';
-    ctx.fillStyle = `hsl(${Math.floor(Math.random() * 360) - count}, ${100 - count * 3}%, 50%)`
+    ctx.fillStyle = `hsl(${360 - count * 20}, ${100 - count * 3}%, 50%)`
     ctx.fill();
     let self: triangleSwarm = this;
     setTimeout (function () {
@@ -40,8 +40,8 @@ class triangleSwarm {
     }, 500)
   }
 }
-let swarm1 = new triangleSwarm (400, 50, 600, 8);
-swarm1.draw(400, 50, 600, 8);
+let swarm1 = new triangleSwarm (400, 50, 600, 10);
+swarm1.draw(400, 50, 600, 10);
 
 
 
