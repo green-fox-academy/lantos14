@@ -25,9 +25,7 @@ console.log(fleet.things.sort(function (a: Thing, b: Thing): number {
 }));
 
 fleet.print();
-//* crete a fleet of things to have this output:*/
-//* 1. [ ] Get milk */
-//* 2. [ ] Remove the obstacles */
-//* 3. [x] Stand up */
-//* 4. [x] Eat lunch */
-//* Hint: You have to create a Print method also */
+
+for (let thing of fleet.things) {
+  thing.printAllFields();
+}

@@ -1,6 +1,7 @@
-import { Comparable } from "../comparable"
+import { Comparable } from "../comparable";
+import { Printable } from "../printable";
 
-class Thing implements Comparable {
+class Thing implements Comparable, Printable {
   private name: string;
   private completed: boolean = false;
 
@@ -34,6 +35,10 @@ class Thing implements Comparable {
       }
       return 0;
     }
+  }
+
+  printAllFields() {
+    console.log(`-- ${this.name} --`)
   }
 }
 
