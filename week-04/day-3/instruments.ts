@@ -3,8 +3,7 @@
 abstract class Instrument {
   protected name: string;
 
-  play(): void {
-  }
+  play(): void {}
 }
 
 abstract class StringedInstrument extends Instrument {
@@ -18,7 +17,6 @@ abstract class StringedInstrument extends Instrument {
   sound(): string {
     return this.instSound;
   }
-  
 }
 
 class ElectricGuitar extends StringedInstrument {
@@ -31,7 +29,7 @@ class ElectricGuitar extends StringedInstrument {
     this.numberOfStrings = numberOfStrings;
   }
 
-  play(): void {
+  play() {
     console.log(`${this.name}, a ${this.numberOfStrings}-stringed instrument that goes ${this.sound()}`); 
   }
 }
@@ -44,7 +42,7 @@ class BassGuitar extends StringedInstrument {
     this.name = 'Bass Guitar';
     this.numberOfStrings = numberOfStrings;
   }
-  play(): void {
+  play() {
     console.log(`${this.name}, a ${this.numberOfStrings}-stringed instrument that goes ${this.sound()}`); 
   }
 }
@@ -58,7 +56,7 @@ class Violin extends StringedInstrument {
     this.numberOfStrings = numberOfStrings;
   }
 
-  play(): void {
+  play() {
     console.log(`${this.name}, a ${this.numberOfStrings}-stringed instrument that goes ${this.sound()}`); 
   }
 }
