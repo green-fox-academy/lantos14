@@ -1,5 +1,7 @@
 'use strict';
 
+import { Flyable } from './flyable';
+
 abstract class Animals {
   name: string;
   type: string;
@@ -40,12 +42,16 @@ class Reptile extends Animals {
   }
 }
 
-class Bird extends Animals {
+class Bird extends Animals implements Flyable {
   type = 'bird';
 
   constructor(name) {
     super(name)
   }
+
+  land() {};
+  
+  fly() {};
 }
 // testing
 let reptile = new Reptile("Crocodile");
