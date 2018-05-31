@@ -14,19 +14,20 @@ export class Garden {
 
   gardenState(): void {
     for (let i: number = 0; i < this.flora.length; i++) {
+      let consolMessage: string = (`The ${this.flora[i].color} ${this.flora[i].type} needs water`);
       if (this.flora[i].type === 'flower' && this.flora[i].waterAmount < 5) {
-        console.log(`The ${this.flora[i].color} ${this.flora[i].type} needs water`);
+        console.log(consolMessage);
       } else if (this.flora[i].type === 'tree' && this.flora[i].waterAmount < 10) {
-        console.log(`The ${this.flora[i].color} ${this.flora[i].type} needs water`);
+        console.log(consolMessage);
       } else {
-        console.log(`The ${this.flora[i].color} ${this.flora[i].type} doesnt need water`);
+        console.log(`The ${this.flora[i].color} ${this.flora[i].type} doesn\'t need water`);
       }
     }
   }
 
   watering(addedWater: number): void {
     console.log(`\nwatering with ${addedWater}`)
-    let needWatering: number = 0;
+    let needWatering: number = 0; // how many plants need watering
     for (let i: number = 0; i < this.flora.length; i++) {
       if (this.flora[i].type === 'flower' && this.flora[i].waterAmount < 5) {
         needWatering++;
@@ -34,7 +35,7 @@ export class Garden {
         needWatering++;
       }
     }
-
+    // actual watering including absorption rate
     for (let i: number = 0; i < this.flora.length; i++) {
       if (this.flora[i].type === 'flower' && this.flora[i].waterAmount < 5) {
         this.flora[i].waterAmount += 0.75 * (addedWater / needWatering);
