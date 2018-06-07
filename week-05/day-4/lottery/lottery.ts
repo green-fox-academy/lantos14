@@ -8,7 +8,7 @@ let fs = require('fs');
 let charEncoding = 'utf-8';
 
 // reading function
-function readFromFile(filePath: string) {
+function readFromFile(filePath: string): string {
   try {
     return fs.readFileSync(filePath, charEncoding);
   } catch (error) {
@@ -34,7 +34,7 @@ function getMostPopularLotteryNumbers(filename: string) {
       lotteryNumberList.push(parseInt(lotteryEventList[i][j]));
     }
   }
-
+  //counting the numbers within an object
   let counterObject: Object = {};
 
   for (let i: number = 0; i < lotteryNumberList.length; i++) {
@@ -45,14 +45,13 @@ function getMostPopularLotteryNumbers(filename: string) {
       counterObject[number]++;
     }
   }
-
+// separating the keys and values into arrays
   let lotteryNums: string[] = Object.keys(counterObject);
 
   let numOccurences: number[] = Object.keys(counterObject).map(function (e) {
     return counterObject[e];
   })
-
-
+// returning the 5 most frequent numbers
   let result: string[] = [];
 
   for (let i: number = 0; i < 5; i++) {
