@@ -20,7 +20,7 @@ function readFromFile(filePath: string) {
   }
 }
 
-function getFrequentDate(filename: string) {
+function getFrequentDate(filename: string): number {
   //reading the file in
   let birthList: string = readFromFile(filename);
   //Getting the dates out of the list
@@ -30,7 +30,7 @@ function getFrequentDate(filename: string) {
     dates.push(tempList[i]);
   }
   //Getting the years out of the list
-  let years = [];
+  let years: number[] = [];
 
   dates.map(e => {
     years.push(parseInt(e.slice(0, 4)));
@@ -46,18 +46,18 @@ function getFrequentDate(filename: string) {
     }
   }
   // counting the object keys and values in separate arrays
-  let dateList = Object.keys(CounterObject);
+  let dateList: string[] = Object.keys(CounterObject);
 
-  let values = Object.keys(CounterObject).map(function (e) {
+  let values: number[] = Object.keys(CounterObject).map(function (e) {
     return CounterObject[e]
   })
-  let maxOccuredNumber = values.reduce(function (a, b) {
+  let maxOccuredNumber: number = values.reduce(function (a, b) {
     return Math.max(a, b);
   })
   // returning the max occurenced year by it's value's index
   let maxOccurencedNumberIndex: number = values.indexOf(maxOccuredNumber);
 
-  return dateList[maxOccurencedNumberIndex];
+  return parseInt(dateList[maxOccurencedNumberIndex]);
 }
 
 console.log(getFrequentDate('births.csv'));
