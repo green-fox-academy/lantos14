@@ -1,0 +1,97 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+}
+
+main {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background-color: aqua;
+  height: 10%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.navleft, .navright {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+a {
+  background-color: darkred;
+  flex: 1 1 0;
+  font-size: 36px;
+  margin: 10px;
+  text-decoration: none;
+  color: white;
+}
+
+p {
+  font-size: 24px;
+  margin: 10px;
+}
+
+content {
+  height: 80%;
+  width: 100%;
+  display: flex;
+}
+
+maincontent {
+  background-color: yellow;
+  
+  overflow: auto;
+}
+
+.redsquarelist {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+}
+
+.redsquare {
+  background-color: red;
+  width: 20%;
+  height: 100px;
+  margin: 1%;
+  list-style-type: none;
+}
+
+.subcontent {
+  display: flex;
+}
+
+rightbar {
+  background-color: green;
+  width: 1000px;
+  overflow: auto;
+}
+
+rightbar ul {
+  padding: 0;
+  margin: 5% 5%;
+}
+
+.rightbarlistitem {
+  background-color: darkslategrey;
+  width: 90%;
+  height: 30px;
+  margin: 3% 0;
+  list-style-type: none;
+}
+
+
