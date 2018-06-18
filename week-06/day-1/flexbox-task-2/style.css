@@ -1,0 +1,17 @@
+.yellow {
+  background-color: #ffd62a;
+  width: 800px;
+  height: 400px;
+}
+
+.purple {
+  background-color: #b02aff;
+  width: 100px;
+  height: 100px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
