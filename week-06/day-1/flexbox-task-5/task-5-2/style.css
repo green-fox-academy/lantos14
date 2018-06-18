@@ -1,0 +1,63 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+}
+
+main {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background-color: aqua;
+  height: 10%;
+  width: 100%;
+}
+
+content {
+  height: 80%;
+  width: 100%;
+  display: flex;
+}
+
+leftbar {
+  background-color: yellow;
+}
+
+maincontent {
+  background-color: tomato;
+  flex-grow: 2;
+  margin: 0 1%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+subcontent {
+  width: 10%;
+  height: 10%;
+  background-color: black;
+  margin: 10%;
+}
+
+rightbar {
+  background-color: purple;
+}
+
+leftbar, rightbar {
+  width: 100px;
+}
+
+footer {
+  background-color: darkblue;
+  height: 10%;
+  width: 100%;
+}
