@@ -10,4 +10,4 @@ for (let i = 0; i < liList.length; i++) {
 
 // task 2
 
-document.querySelector('ul').style.background = 'limegreen';
+document.querySelector('ul').setAttribute('class','lime');
