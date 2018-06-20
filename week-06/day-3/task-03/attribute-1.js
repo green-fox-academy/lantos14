@@ -1,4 +1,4 @@
-
+'use strict';
 // task 1
 
 let image = document.querySelector('img');

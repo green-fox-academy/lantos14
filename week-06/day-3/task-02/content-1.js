@@ -1,3 +1,5 @@
+'use strict';
+
 const paragraphs = document.querySelectorAll('p');
 
 for (let i = 0; i < paragraphs.length - 1; i++) {

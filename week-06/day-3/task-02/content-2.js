@@ -1,3 +1,4 @@
+'use strict';
 // task 1
 
 const fruitList = ['apple', 'banana', 'cat', 'dog'];
