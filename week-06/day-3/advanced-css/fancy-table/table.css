@@ -7,7 +7,6 @@ body {
 
 table {
   border-collapse: collapse;
-  border: 2px solid #c9cad6;
   font-family: 'Muli', sans-serif;
   font-size: 32px;
   color: #555;
@@ -17,8 +16,11 @@ table {
 }
 
 th, td {
-  border: 2px solid #9ea7af;
   padding: 0 30px;
+}
+
+tr {
+  border-bottom: 2px solid #9ea7af;
 }
 
 thead {
@@ -39,4 +41,24 @@ th {
 
 .odd {
   background: #ddd;
+}
+
+.bottom-left {
+  border-bottom-left-radius: 10px;
+}
+
+.bottom-right {
+  border-bottom-right-radius: 10px;
+}
+
+.top-left {
+  border-top-left-radius: 10px;
+}
+
+.top-right {
+  border-top-right-radius: 10px;
+}
+
+.first-column {
+  border-right: 2px solid #9ea7af;
 }
