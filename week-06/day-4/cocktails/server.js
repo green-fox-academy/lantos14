@@ -26,9 +26,20 @@ app.listen(PORT, () => {
 });
 
 app.get('/', (req, res) => {
+  let listToRender = [];
+
+  if (req.query.alcohol === undefined) {
+    cocktails.forEach(e => {
+      listToRender.push(e);
+    })
+  } else {
+    cocktails.forEach(e => {
+      if (e.contains.indexOf(req.query.alcohol) !== -1 && e.isAlcoholic) {
+        listToRender.push(e);
+      }
+    })
+  }
   res.render('home', {
-    cocktails: cocktails,
-    filter: req.query.alcohol,
-    alcoholList: alcoholList,
+    drinkList: listToRender,
   });
 });
