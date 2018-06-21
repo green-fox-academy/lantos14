@@ -10,10 +10,6 @@ const todos = [
   'go back to bed',
 ];
 
-// todos.forEach( e => {
-//   console.log(e);
-// })
-
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
