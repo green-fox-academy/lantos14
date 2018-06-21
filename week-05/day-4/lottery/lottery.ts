@@ -51,6 +51,7 @@ function getMostPopularLotteryNumbers(filename: string) {
   let numOccurences: number[] = Object.keys(counterObject).map(function (e) {
     return counterObject[e];
   })
+  console.log (counterObject);
 // returning the 5 most frequent numbers
   let result: string[] = [];
 

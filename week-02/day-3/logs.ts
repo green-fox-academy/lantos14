@@ -59,3 +59,5 @@ function requestCounter () {
    return (`GET number: ${getCount}, POST number: ${postCount}`);
   }
 console.log (requestCounter());
+
+console.log(splittedLog);

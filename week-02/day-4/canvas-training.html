@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang = "en">
+  <head>
+
+    <meta charset="UTF-8">
+    <title>Canvas</title>
+  </head>
+  <body>
+
+    <canvas id='canvas' style='border: 1px solid; width: 800px; height: 600px;'>
+      Sorry, your browser does not support the canvas tag.
+    </canvas>
+
+    <script>
+      let canvas = document.getElementById('canvas');
+      
+      // these values are for getting the drawing to the right place in the canvas area
+      // without these the drawing will scale up to the size of canvas 
+      canvas.width = canvas.scrollWidth;
+      canvas.height = canvas.scrollHeight;
+
+      let ctx = canvas.getContext('2d');
+      // rectangle filled
+      ctx.fillStyle = 'green';
+      ctx.fillRect(50, 50, 100, 100);
+      // coordinate system, the y-axis is inverted, but just the top right quadrance is needed
+      
+      //rectangle stroked
+      ctx.strokeStyle = 'red';
+      ctx.strokeRect(200, 50, 100, 100);
+      
+      // circle filled
+      ctx.fillStyle = 'blue';
+      ctx.beginPath();
+      ctx.arc(400, 100, 50, 0, Math.PI * 2);
+      // ctx.arc(x-cord,y-cord,radius, starting angle, ending angle) =>starting angle = 0 is 3 o'clock
+      ctx.fill()
+
+      // circle stroked
+      ctx.strokeStyle = 'purple';
+      ctx.beginPath();
+      ctx.arc(550, 100, 50, 0, Math.PI * 2);
+      // ctx.arc(x-cord,y-cord,radius, starting angle, ending angle) =>starting angle = 0 is 3 o'clock
+      ctx.stroke()
+      
+      // circle quarter
+      ctx.fillStyle = 'pink';
+      ctx.beginPath();
+      ctx.arc(700, 100, 50, 0, Math.PI / 2);
+      ctx.lineTo(700,100);
+      ctx.fill();
+      // canvas it's not like a html object, it has not got z-index, its jus pixels which can be colored
+
+      //move to method moves the pen without a mark
+      //line to method moves the pen with a mark
+
+      ctx.beginPath();
+      ctx.moveTo(300, 300);
+      ctx.lineTo(400, 200);
+      ctx.moveTo(500, 300);
+      ctx.lineTo(450,200);
+
+      ctx.strokeStyle = 'green';
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.moveTo(200, 400);
+      ctx.lineTo(450, 300);
+      ctx.lineTo(620, 500);
+      ctx.lineTo(650,600);
+      // if the only open part of the shape is between the start and end point it can fill up the shape
+
+      ctx.fillStyle = 'orange';
+      ctx.fill();
+      </script>
+
+  </body>
+</html>

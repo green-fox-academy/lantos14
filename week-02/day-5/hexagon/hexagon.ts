@@ -8,7 +8,7 @@ function drawHexa (x,y) {
   ctx.beginPath();
   ctx.moveTo (x,y);
   ctx.lineTo (x+20,y);
-  ctx.strokeStyle = 'red';
+  ctx.strokeStyle = 'black';
   ctx.stroke();
   
   ctx.beginPath();
