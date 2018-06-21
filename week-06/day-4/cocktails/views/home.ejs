@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Cocktails server</title>
+  <link rel="stylesheet" href="./static/style.css"/>
+</head>
+
+<body>
+
+  <h1>Cocktails</h1>
+
+  <header>
+    <a href="/">all</a>
+    <a href="/?alcohol=gin">gin</a>
+    <a href="/?alcohol=rum">rum</a>
+    <a href="/?alcohol=vodka">vodka</a>
+    <a href="/?alcohol=tequila">tequila</a>
+  </header>
+
+  <table>
+    <thead>
+      <th>Name</th>
+      <th>Price</th> 
+    </thead>
+    <tbody>
+      <!-- if no alcohol type provided -->
+        <% if (filter === undefined) { %>
+          <% cocktails.forEach ( e => { %>
+            <tr>
+              <% if (e.isAlcoholic) { %>
+                <td><%= e.name %><br><span><%= e.contains %></span></td>
+                <td><%= e.price %></td>
+            <% } else { %>
+                <td><%= e.name %> <span class='non-alc'><em>(non-alcoholic)</em></span><br><span><%= e.contains %></span></td>
+                <td><%= e.price %></td>
+            <% } %> 
+            </tr>
+          <% }) %>
+          <!-- filter by alcohol name and alcohol -->
+        <% } else { %>
+          <% cocktails.forEach ( e => { %>
+            <% if (e.contains.indexOf(filter) !== -1 && e.isAlcoholic) { %>
+              <tr>
+              <td><%= e.name %><br><span><%= e.contains %></span></td>
+              <td><%= e.price %></td>
+              </tr>
+            <% } %>
+          <% }) %>
+        <% } %>
+    </tbody>
+  </table>
+  <!-- <ul></ul>
+  <% if (filter === undefined) { %>
+    <% cocktails.forEach ( e => { %>
+      <li><%= Object.values(e) %></li>
+    <% }) %>
+  <% } else { %>
+    <% cocktails.forEach ( e => { %>
+      <% if (e.contains.indexOf(filter) !== -1) { %>
+        <li><%= Object.values(e) %></li>
+      <% } %>
+    <% }) %>
+  <% } %> -->
+</body>
+
+</html>

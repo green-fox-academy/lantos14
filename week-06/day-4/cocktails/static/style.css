@@ -1,0 +1,48 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+table {
+  font-family: 'Muli', sans-serif;
+  font-size: 24px;
+  width: 50%;
+}
+
+header {
+  margin: 20px;
+}
+
+thead {
+background: black;
+color: white;
+}
+
+a {
+  font-size: 30px;
+  text-decoration: unset;
+  padding: 0 5px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  outline: none;
+}
+
+a:hover {
+  filter: brightness(80%);
+  background: rgb(199, 202, 248);
+  color: black;
+}
+
+span {
+  font-size: 18px;
+}
+
+tr {
+  border-bottom: 1px solid rgb(97, 64, 186);
+}
+
+tr:nth-child(2n) {
+  background: rgb(199, 202, 248);
+}
