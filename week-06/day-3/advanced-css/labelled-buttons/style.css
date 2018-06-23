@@ -19,7 +19,7 @@ body {
 .icon {
   display: flex;
   justify-content: left;
-  width: 26px;
+  width: 33px;
   overflow: hidden;
   transition-property: width;
   transition-duration: 1s;
@@ -27,11 +27,11 @@ body {
 }
 
 .icon:hover {
-  width: 80px;
+  width: 90px;
 }
 
 .fas, p {
-  padding: 5px;
+  padding: 10px;
   height: 100%;
 }
 
@@ -39,6 +39,7 @@ body {
   background: rgba(34, 33, 33, 0.5);
   color: white;
   width: 24px;
+  border-radius: 5px;
 }
 
 .fa-trash-alt:hover {
