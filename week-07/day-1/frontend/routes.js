@@ -95,11 +95,8 @@ app.post('/dountil/:what', (req, res) => {
 });
 
 app.post('/arrays/:what', (req, res) => {
-  if (!req.params.what) {
-    res.json({
-      error: "Please provide what to do with the numbers!",
-  });
-} else if (req.body.what === 'sum' && req.body.numbers) {
+
+  if (req.body.what === 'sum' && req.body.numbers) {
     let endNum = 0;
     req.body.numbers.forEach(num => {
       endNum += num;
@@ -114,11 +111,52 @@ app.post('/arrays/:what', (req, res) => {
     });
   } else if (req.body.what === 'double' && req.body.numbers) {
     res.json({
-      result: req.body.numbers.map(n =>n * 2),
+      result: req.body.numbers.map(n => n * 2),
     })
   } else {
     res.json({
-        error: "Please provide what to do with the numbers!",
+      error: "Please provide what to do with the numbers!",
+    });
+  }
+});
+
+app.post('/sith', (req, res) => {
+
+  if (req.body.text) {
+    let text = req.body.text.toLowerCase().split(' ');
+    // switching words
+    for (let i = 0; i < text.length; i += 2) {
+      if (text[i][text[i].length - 1] === '.' || text[i + 1][text[i + 1].length - 1] === '.') {
+        i--;
+      } else {
+        let temp = text[i];
+        text[i] = text[i + 1];
+        text[i + 1] = temp;
+      }
+    }
+    // adding gibberish words and capitalize
+    for (let i = 0; i < text.length; i++) {
+      // capitalizing 1st letter
+      if ( i === 0) {
+        text[i] = text[i][0].toUpperCase() + text[i].slice(1);
+      } 
+      // capitalizing other letters
+      if (text[i][text[i].length - 1] === '.') {
+        if (text[i + 1]) {
+          text[i + 1] = text[i + 1][0].toUpperCase() + text[i + 1].slice(1);
+        }
+        let gibberish = ['Hmm...', 'Haa?', 'Rmm...'];
+        text.splice(i + 1, 0, gibberish[Math.floor(Math.random() * 3)]);
+        i++;
+      }
+    }
+  
+    res.send({
+      sith_text: text.join(' '),
+    })
+  } else {
+    res.send({
+      error: "Feed me some text you have to, padawan young you are. Hmmm.",
     });
   }
 });
