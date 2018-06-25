@@ -134,23 +134,32 @@ app.post('/sith', (req, res) => {
         text[i + 1] = temp;
       }
     }
-    // adding gibberish words and capitalize
     for (let i = 0; i < text.length; i++) {
       // capitalizing 1st letter
-      if ( i === 0) {
+      if (i === 0) {
         text[i] = text[i][0].toUpperCase() + text[i].slice(1);
-      } 
+      }
       // capitalizing other letters
       if (text[i][text[i].length - 1] === '.') {
         if (text[i + 1]) {
           text[i + 1] = text[i + 1][0].toUpperCase() + text[i + 1].slice(1);
         }
-        let gibberish = ['Hmm...', 'Haa?', 'Rmm...'];
-        text.splice(i + 1, 0, gibberish[Math.floor(Math.random() * 3)]);
-        i++;
+        // adding gibberish words and capitalize
+        let oneOrTwo = Math.floor(Math.random() * 2);
+        let gibberish = ['Hmm.. ', 'Haa?', 'Rmm.. '];
+        switch (oneOrTwo) {
+
+          case 0:
+            text.splice(i + 1, 0, gibberish[Math.floor(Math.random() * 3)]);
+            i++;
+
+          case 1:
+            text.splice(i + 1, 0, gibberish[Math.floor(Math.random() * 3)] + gibberish[Math.floor(Math.random() * 3)]);
+            i++
+        }
       }
     }
-  
+
     res.send({
       sith_text: text.join(' '),
     })
