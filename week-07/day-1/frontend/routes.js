@@ -4,8 +4,11 @@ const cors = require('cors');
 const express = require('express');
 const app = express();
 
+const bodyParser = require('body-parser');
+
 app.use('/assets', express.static('static'));
 app.use(cors());
+app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
@@ -62,5 +65,36 @@ app.get('/appenda', (req, res) => {
     message: '404',
   })
 })
+
+app.post('/dountil/:what', (req, res) => {
+
+  // sum
+  if (req.params.what === 'sum') {
+    let endNum = 0;
+    for (let i = 1; i <= req.body.until; i++) {
+      endNum+=i;
+    }
+    res.json({
+      result: endNum,
+    }) 
+    // factorio
+  } else if (req.params.what === 'factor') {
+    function factorial(num) {
+      if (num === 1) {
+        return 1;
+      } else {
+        return num * factorial(num - 1);
+      }
+    }
+    res.json({
+      result: factorial(req.body.until),
+    })
+    // no number provided
+  } else {
+    res.json({
+      error: 'Please provide a number!',
+    })
+  }
+});
 
 module.exports = app;
