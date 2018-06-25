@@ -61,3 +61,78 @@ test('appenda no appendable provided', (t) => {
 });
 
 // test post
+
+test('post base', (t) => {
+  request(app)
+  .post('/dountil/sum')
+  .send({ until: 5})
+  .expect('Content-Type', /json/)
+  .expect(200, { result: 15})
+  .end((err, res) => {
+    t.error(err);
+    t.end();
+  });
+});
+
+// test array
+
+test('/array/sum', (t) => {
+  request(app)
+  .post('/arrays/sum')
+  .send({ what: "sum", numbers: [5, 10, 20]})
+  .expect('Content-Type', /json/)
+  .expect(200, { result: 35})
+  .end((err, res) => {
+    t.error(err);
+    t.end();
+  });
+});
+
+test('/array/multiply', (t) => {
+  request(app)
+  .post('/arrays/sum')
+  .send({ what: "multiply", numbers: [5, 6, 2]})
+  .expect('Content-Type', /json/)
+  .expect(200, { result: 60})
+  .end((err, res) => {
+    t.error(err);
+    t.end();
+  });
+});
+
+test('/array/multiply', (t) => {
+  request(app)
+  .post('/arrays/sum')
+  .send({ what: "multiply", numbers: [5, 6, 2]})
+  .expect('Content-Type', /json/)
+  .expect(200, { result: 60})
+  .end((err, res) => {
+    t.error(err);
+    t.end();
+  });
+});
+
+test('/array/double', (t) => {
+  request(app)
+  .post('/arrays/double')
+  .send({ what: "double", numbers: [5, 6, 2]})
+  .expect('Content-Type', /json/)
+  .expect(200, { result: [10, 12, 4]})
+  .end((err, res) => {
+    t.error(err);
+    t.end();
+  });
+});
+
+test('/array/ -- no method', (t) => {
+  request(app)
+  .post('/arrays/sum')
+  .send({ numbers: [5, 6, 2]})
+  .expect('Content-Type', /json/)
+  .expect(200, { error: "Please provide what to do with the numbers!"})
+  .end((err, res) => {
+    t.error(err);
+    t.end();
+  });
+});
+// need further testing with undefined wath param

@@ -72,25 +72,54 @@ app.post('/dountil/:what', (req, res) => {
   if (req.params.what === 'sum') {
     let endNum = 0;
     for (let i = 1; i <= req.body.until; i++) {
-      endNum+=i;
+      endNum += i;
     }
     res.json({
       result: endNum,
-    }) 
+    })
     // factorio
   } else if (req.params.what === 'factor') {
     let endNum = req.body.until;
     for (let i = req.body.until - 1; i >= 1; i--) {
-      endNum*= i
+      endNum *= i
     }
     res.json({
       result: endNum,
-    }) 
+    })
     // no number provided
   } else {
     res.json({
       error: 'Please provide a number!',
     })
+  }
+});
+
+app.post('/arrays/:what', (req, res) => {
+  if (!req.params.what) {
+    res.json({
+      error: "Please provide what to do with the numbers!",
+  });
+} else if (req.body.what === 'sum' && req.body.numbers) {
+    let endNum = 0;
+    req.body.numbers.forEach(num => {
+      endNum += num;
+    });
+    res.json({
+      result: endNum,
+    })
+  } else if (req.body.what === 'multiply' && req.body.numbers) {
+    let endNum = req.body.numbers.reduce((a, b) => a * b, 1);
+    res.json({
+      result: endNum,
+    });
+  } else if (req.body.what === 'double' && req.body.numbers) {
+    res.json({
+      result: req.body.numbers.map(n =>n * 2),
+    })
+  } else {
+    res.json({
+        error: "Please provide what to do with the numbers!",
+    });
   }
 });
 
