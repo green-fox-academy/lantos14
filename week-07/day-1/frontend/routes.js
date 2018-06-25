@@ -42,4 +42,25 @@ app.get('/greeter', (req, res) => {
   }
 });
 
+app.get('/appenda/:appendable', (req, res) => {
+
+  if (req.params.appendable) {
+    res.json({
+      appended: `${req.params.appendable}a`,
+    });
+  } else {
+    res.status(404);
+    res.send({
+      message: '404',
+    })
+  }
+});
+
+app.get('/appenda', (req, res) => {
+  res.status(404);
+  res.send({
+    message: '404',
+  })
+})
+
 module.exports = app;
