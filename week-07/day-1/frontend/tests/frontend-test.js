@@ -135,4 +135,6 @@ test('/array/ -- no method', (t) => {
     t.end();
   });
 });
-// need further testing with undefined wath param
+// need further testing with undefined :wath param
+
+// can't test sith due to random text add-ons
