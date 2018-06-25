@@ -79,16 +79,13 @@ app.post('/dountil/:what', (req, res) => {
     }) 
     // factorio
   } else if (req.params.what === 'factor') {
-    function factorial(num) {
-      if (num === 1) {
-        return 1;
-      } else {
-        return num * factorial(num - 1);
-      }
+    let endNum = req.body.until;
+    for (let i = req.body.until - 1; i >= 1; i--) {
+      endNum*= i
     }
     res.json({
-      result: factorial(req.body.until),
-    })
+      result: endNum,
+    }) 
     // no number provided
   } else {
     res.json({
