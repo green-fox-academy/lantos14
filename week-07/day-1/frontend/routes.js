@@ -120,6 +120,12 @@ app.post('/arrays/:what', (req, res) => {
   }
 });
 
+app.post ('/arrays', (req, res) => {
+  res.json({
+    error: "Please provide what to do with the numbers!",
+  });
+});
+
 app.post('/sith', (req, res) => {
 
   if (req.body.text) {

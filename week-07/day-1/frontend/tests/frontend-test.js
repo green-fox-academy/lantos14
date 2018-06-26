@@ -124,7 +124,7 @@ test('/array/double', (t) => {
   });
 });
 
-test('/array/ -- no method', (t) => {
+test('/array -- no method', (t) => {
   request(app)
   .post('/arrays/sum')
   .send({ numbers: [5, 6, 2]})
@@ -135,6 +135,5 @@ test('/array/ -- no method', (t) => {
     t.end();
   });
 });
-// need further testing with undefined :wath param
 
 // can't test sith due to random text add-ons
