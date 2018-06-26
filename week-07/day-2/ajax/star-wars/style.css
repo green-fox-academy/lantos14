@@ -1,0 +1,28 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+#upper-side {
+  display: flex;
+  margin: 20px 0;
+  flex-direction: column;
+  align-items: center;
+}
+
+#left, #right {
+  border: 5px groove gray;
+  min-width: 200px;
+  min-height: 150px;
+}
+
+#list-side {
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+}
+
+#btn {
+  margin: 10px 0;
+}
