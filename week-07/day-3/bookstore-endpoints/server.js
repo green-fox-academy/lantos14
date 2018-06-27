@@ -37,9 +37,16 @@ app.get('/api/titles', (req, res) => {
 });
 
 app.get('/api/full-list', (req, res) => {
-  let sql = 'SELECT book_name, aut_name, cate_descrip, pub_name, book_price FROM book_mast INNER JOIN author ON book_mast.aut_id = author.aut_id INNER JOIN category ON book_mast.cate_id = category.cate_id INNER JOIN publisher ON book_mast.pub_id = publisher.pub_id;';
+  const mainSQLQuery = 'SELECT book_name, aut_name, cate_descrip, pub_name, book_price FROM book_mast INNER JOIN author ON book_mast.aut_id = author.aut_id INNER JOIN category ON book_mast.cate_id = category.cate_id INNER JOIN publisher ON book_mast.pub_id = publisher.pub_id';
+  let sql = `${mainSQLQuery};`;
+  let queryInputs = [];
 
-  conn.query(sql, (err, rows) => {
+  if (req.query.category) {
+    sql = `${mainSQLQuery} WHERE cate_descrip LIKE ?;`;
+    queryInputs = [req.query.category];
+  }
+
+  conn.query(sql, queryInputs, (err, rows) => {
 
     if (err) {
       console.log(err);
