@@ -1,0 +1,26 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: rgba(184, 119, 23, 0.3);
+  background-size: contain;
+}
+
+#get-titles, #get-full-list {
+  min-height: 400px;
+}
+
+th, td {
+  min-width: 240px;
+}
+
+td {
+  text-align: center;
+}
+
+tr:nth-child(2n) {
+  background: rgba(233, 158, 44, 0.3);
+}
