@@ -17,6 +17,10 @@ body {
   display: none;
 }
 
+#filter-tab {
+  margin: 10px 0;
+}
+
 th, td {
   min-width: 240px;
 }
@@ -34,6 +38,16 @@ button {
   outline: none;
   background: rgba(148, 90, 52, 0.466);
   font-size: 18px;
+}
+
+.div-sub-btn {
+  margin: 10px;
+}
+
+.sub-btn {
+  background: rgba(177, 141, 116, 0.466);
+  padding: 5px;
+  margin: 5px;
 }
 
 button:hover {

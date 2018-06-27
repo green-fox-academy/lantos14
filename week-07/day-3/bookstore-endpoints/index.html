@@ -16,14 +16,25 @@
   </div>
 
   <div id='get-full-list'>
+
       <h3>Get Full List</h3>
       <button id="full-list-btn">All Books</button>
+      
       <div id='filter-tab'>
-        <button class="filter-btn">Science</button>
-        <button class="filter-btn">Nature</button>
-        <button class="filter-btn">Technology</button>
-        <button class="filter-btn">Computers</button>
-        <button class="filter-btn">Medical</button>
+        
+        <div id="cat-filter">
+          <button id="get-cat-filters">Categories</button>
+          <div class="div-sub-btn" id="div-cat-filters">
+
+          </div>
+
+          <div id="cost-filter">
+              <button id="get-cost-filters">Price</button>
+              <div class="div-sub-btn" id="div-cost-filters">
+                
+              </div>
+        </div>
+
       </div>
       <table>
         <thead>
@@ -37,9 +48,7 @@
 
         </tbody>
       </table>
-      <ul id='list2'>
-        
-      </ul>
+
     </div>
 <script src="./static/main.js"></script>
 </body>

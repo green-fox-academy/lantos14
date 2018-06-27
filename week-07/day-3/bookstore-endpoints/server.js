@@ -46,6 +46,17 @@ app.get('/api/full-list', (req, res) => {
     queryInputs = [req.query.category];
   }
 
+  if (req.query.pgt) {
+    console.log(req.query);
+    sql = `${mainSQLQuery} WHERE book_price >= ?;`;
+    queryInputs  = [req.query.pgt];
+  }
+
+  if (req.query.category && req.query.pgt) {
+    sql = `${mainSQLQuery} WHERE cate_descrip LIKE ? AND WHERE book_price >= ?;`;
+    queryInputs  = [req.query.category, req.query.pgt];
+  }
+
   conn.query(sql, queryInputs, (err, rows) => {
 
     if (err) {
