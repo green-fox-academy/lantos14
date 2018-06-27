@@ -24,3 +24,18 @@ td {
 tr:nth-child(2n) {
   background: rgba(233, 158, 44, 0.3);
 }
+
+button {
+  border-radius: 15px;
+  outline: none;
+  background: rgba(148, 90, 52, 0.466);
+  font-size: 18px;
+}
+
+button:hover {
+  filter: brightness(120%);
+}
+
+button:active {
+  filter: brightness(80%);
+}
