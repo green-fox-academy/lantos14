@@ -13,6 +13,10 @@ body {
   min-height: 400px;
 }
 
+#get-titles {
+  display: none;
+}
+
 th, td {
   min-width: 240px;
 }
