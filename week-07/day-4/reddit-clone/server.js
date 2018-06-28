@@ -92,9 +92,28 @@ app.delete('/posts/:id', (req, res) => {
     });
   });
 });
-// modify title endpoint
+// modify title and/or url endpoint
 app.put('/posts/:id', (req, res) => {
-  let sql = `UPDATE posts SET title = "${req.body.modTitle}" WHERE id = ${req.params.id};`;
+  let sql = ``;
+  let message = ``;
+  if (req.body.modTitle && req.body.modUrl) {
+    console.log('case 1')
+    sql = `UPDATE posts SET title = "${req.body.modTitle}", url = "${req.body.modUrl}" WHERE id = ${req.params.id};`;
+    message = `post title has been changed to "${req.body.modTitle}", url changed to "${req.body.modUrl}" at ID: ${req.params.id}`;
+  } else if (req.body.modTitle && !req.body.modUrl) {
+    console.log('case 2')
+    sql = `UPDATE posts SET title = "${req.body.modTitle}" WHERE id = ${req.params.id};`;
+    message = `post title has been changed to "${req.body.modTitle}" at ID: ${req.params.id}`;
+  } else if (!req.body.modTitle && req.body.modUrl) {
+    console.log('case 3')
+    sql = `UPDATE posts SET url = "${req.body.modUrl}" WHERE id = ${req.params.id};`;
+    message = `post url has been changed to "${req.body.modUrl}" at ID: ${req.params.id}`;
+  } else if (!req.body.modTitle && !req.body.modUrl) {
+    res.send({
+      message: `no modifications provided`,
+    });
+    return;
+  }
 
   conn.query(sql, (err, rows) => {
     if (err) {
@@ -103,7 +122,7 @@ app.put('/posts/:id', (req, res) => {
       return;
     }
     res.send({
-      message: `post title has benn changed to "${req.body.modTitle}" at ID: ${req.params.id}`,
+      message,
     });
   });
 });
