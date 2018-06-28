@@ -33,9 +33,9 @@ app.get('/posts', (req, res) => {
 
 app.post('/posts', (req, res) => {
 
-  let sql = `INSERT INTO posts (title, url) VALUES ('${req.body.title}', '${req.body.url}');`;
+  let sqlPost = `INSERT INTO posts (title, url) VALUES ('${req.body.title}', '${req.body.url}');`;
 
-  conn.query(sql, (err, rows) => {
+  conn.query(sqlPost, (err, rows) => {
 
     if (err) {
       console.log(err);
@@ -89,6 +89,21 @@ app.delete('/posts/:id', (req, res) => {
     }
     res.send({
       message: `post has benn deleted at ID: ${req.params.id}`,
+    });
+  });
+});
+
+app.put('/posts/:id', (req, res) => {
+  let sql = `UPDATE posts SET title = "${req.body.modTitle}" WHERE id = ${req.params.id};`;
+
+  conn.query(sql, (err, rows) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send();
+      return;
+    }
+    res.send({
+      message: `post title has benn changed to "${req.body.modTitle}" at ID: ${req.params.id}`,
     });
   });
 });
