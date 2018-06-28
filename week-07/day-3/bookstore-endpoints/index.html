@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <title>Bookstore Endpoints</title>
+  <link href="https://fonts.googleapis.com/css?family=Poor+Story" rel="stylesheet">
   <link rel="stylesheet" type="text/css" media="screen" href="./static/style.css" />
 </head>
 <body>
@@ -11,43 +12,51 @@
     <h3>Get Titles</h3>
     <button id="titles">Get Titles!</button>
     <ul id='list1'>
-      
+
     </ul>
   </div>
 
   <div id='get-full-list'>
 
-      <h3>Get Full List</h3>
+    <div id="header">
+      <h3>Book Sentinel</h3>
+    </div>
+    <div id='filter-tab'>
       <button id="full-list-btn">All Books</button>
-      
-      <div id='filter-tab'>
-        
-        <div id="inputs">
-          <form>
-            <label for="category">Category:</label>
-            <input type="text" id="cat-input">
 
-            <label for="price">Price over:</label>
+      <div id="inputs">
+        <form>
+          <div id="radio-tab">
+            <p> <b>Available Categories:</b></p>
+            <input class="radio-check" type="radio" name="category" value="Science" checked> Science
+            <input class="radio-check"  type="radio" name="category" value="Nature"> Nature
+            <input class="radio-check"  type="radio" name="category" value="Technology"> Technology<br>
+            <input class="radio-check"  type="radio" name="category" value="Computers"> Computers
+            <input class="radio-check"  type="radio" name="category" value="Medical"> Medical
+          </div>
+          <div id="price-tab">
+            <label for="price"><b>Price over:</b></label>
             <input type="text" id="price-input">
-          </form>
-          <button id="search-by-input">Search</button>
-        </div>
-
+          </div>
+        </form>
+        <button id="search-by-input">Search</button>
       </div>
-      <table>
-        <thead>
-          <th>Name</th>
-          <th>Author</th>
-          <th>Category</th>
-          <th>Publisher</th>
-          <th>Price</th>
-        </thead>
-        <tbody id="full-list-tbody">
-
-        </tbody>
-      </table>
 
     </div>
-<script src="./static/main.js"></script>
+    <table>
+      <thead>
+        <th>Name</th>
+        <th>Author</th>
+        <th>Category</th>
+        <th>Publisher</th>
+        <th>Price</th>
+      </thead>
+      <tbody id="full-list-tbody">
+
+      </tbody>
+    </table>
+
+  </div>
+  <script src="./static/main.js"></script>
 </body>
 </html>

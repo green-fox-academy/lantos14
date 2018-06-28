@@ -41,16 +41,12 @@ app.get('/api/full-list', (req, res) => {
   let sql = `${mainQuery};`;
   let queryInput = [];
   
-  if (req.query.category) {
-    sql = `${mainQuery} WHERE cate_descrip LIKE '${req.query.category}';`;
-  }
-
-  if (req.query.pgt) {
-    sql = `${mainQuery} WHERE book_price >= ${req.query.pgt};`;
-  }
-
   if (req.query.category && req.query.pgt) {
     sql = `${mainQuery} WHERE cate_descrip LIKE '${req.query.category}' AND book_price >= ${req.query.pgt};`;
+  } else if (req.query.category) {
+    sql = `${mainQuery} WHERE cate_descrip LIKE '${req.query.category}';`;
+  } else if (req.query.pgt) {
+    sql = `${mainQuery} WHERE book_price >= ${req.query.pgt};`;
   }
 
   conn.query(sql, (err, rows) => {

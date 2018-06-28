@@ -10,6 +10,17 @@ const inputCat = document.querySelector("#cat-input");
 const inputPrice = document.querySelector("#price-input");
 const searchBtn = document.querySelector('#search-by-input');
 
+const radioBtns = document.querySelectorAll('.radio-check');
+
+function getCheckedRadio(btnList) {
+  let result = '';
+  btnList.forEach(btn => {
+    if (btn.checked) {
+      result = btn.value;
+    }
+  });
+  return result;
+}
 
 const renderTable = function (BookList, appendable) {
   BookList.forEach(book => {
@@ -41,25 +52,22 @@ buttonFullList.addEventListener('click', () => {
 
   http.open('GET', "http://localhost:3000/api/full-list", true);
   http.onload = () => {
+
     let response = JSON.parse(http.response);
-
     fullListBody.innerHTML = '';
-
     renderTable(response.fullList, fullListBody);
-
   }
   http.send();
 });
 
 searchBtn.addEventListener('click', () => {
-  http.open('GET', `http://localhost:3000/api/full-list?category=${inputCat.value}&pgt=${inputPrice.value}`, true);
-      http.onload = () => {
-        
-        let response = JSON.parse(http.response);
 
-        fullListBody.innerHTML = '';
+  http.open('GET', `http://localhost:3000/api/full-list?category=${getCheckedRadio(radioBtns)}&pgt=${inputPrice.value}`, true);
+  http.onload = () => {
 
-        renderTable(response.fullList, fullListBody);
-      }
-      http.send();
+    let response = JSON.parse(http.response);
+    fullListBody.innerHTML = '';
+    renderTable(response.fullList, fullListBody);
+  }
+  http.send();
 });
