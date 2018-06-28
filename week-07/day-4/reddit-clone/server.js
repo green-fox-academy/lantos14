@@ -15,7 +15,7 @@ const conn = mysql.createConnection({
   database: process.env.DB_DATABASE,
 });
 
-app.get('/api/posts', (req, res) => {
+app.get('/posts', (req, res) => {
   let sql = `SELECT * FROM posts;`;
 
   conn.query(sql, (err, rows) => {
@@ -31,12 +31,12 @@ app.get('/api/posts', (req, res) => {
   });
 });
 
-app.post('/api/posts', (req, res) => {
+app.post('/posts', (req, res) => {
 
   let sql = `INSERT INTO posts (title, url) VALUES ('${req.body.title}', '${req.body.url}');`;
-  
+
   conn.query(sql, (err, rows) => {
-    
+
     if (err) {
       console.log(err);
       res.status(500).send();
@@ -48,7 +48,7 @@ app.post('/api/posts', (req, res) => {
   });
 });
 
-app.put ('/api/:id/upvote', (req, res) => {
+app.put('/posts/:id/upvote', (req, res) => {
   let sql = `UPDATE posts set score = score + 1 WHERE id = ${req.params.id};`;
 
   conn.query(sql, (err, rows) => {
@@ -63,7 +63,7 @@ app.put ('/api/:id/upvote', (req, res) => {
   });
 });
 
-app.put ('/api/:id/downvote', (req, res) => {
+app.put('/posts/:id/downvote', (req, res) => {
   let sql = `UPDATE posts set score = score - 1 WHERE id = ${req.params.id};`;
 
   conn.query(sql, (err, rows) => {
@@ -74,6 +74,21 @@ app.put ('/api/:id/downvote', (req, res) => {
     }
     res.send({
       message: `post is downvoted at ID: ${req.params.id}`,
+    });
+  });
+});
+
+app.delete('/posts/:id', (req, res) => {
+  let sql = `DELETE FROM posts WHERE id = ${req.params.id};`;
+
+  conn.query(sql, (err, rows) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send();
+      return;
+    }
+    res.send({
+      message: `post has benn deleted at ID: ${req.params.id}`,
     });
   });
 });
