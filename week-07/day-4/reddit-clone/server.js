@@ -4,8 +4,9 @@ require('dotenv').config();
 const express = require('express');
 const mysql = require('mysql');
 const app = express();
-const { parse } = require('querystring');
 const PORT = 3000;
+
+app.use(express.json());
 
 const conn = mysql.createConnection({
   host: process.env.DB_HOST,
@@ -32,7 +33,49 @@ app.get('/api/posts', (req, res) => {
 
 app.post('/api/posts', (req, res) => {
 
+  let sql = `INSERT INTO posts (title, url) VALUES ('${req.body.title}', '${req.body.url}');`;
   
+  conn.query(sql, (err, rows) => {
+    
+    if (err) {
+      console.log(err);
+      res.status(500).send();
+      return;
+    }
+    res.send({
+      message: `post is stored at ID: ${rows.insertId}`,
+    });
+  });
+});
+
+app.put ('/api/:id/upvote', (req, res) => {
+  let sql = `UPDATE posts set score = score + 1 WHERE id = ${req.params.id};`;
+
+  conn.query(sql, (err, rows) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send();
+      return;
+    }
+    res.send({
+      message: `post is upvoted at ID: ${req.params.id}`,
+    });
+  });
+});
+
+app.put ('/api/:id/downvote', (req, res) => {
+  let sql = `UPDATE posts set score = score - 1 WHERE id = ${req.params.id};`;
+
+  conn.query(sql, (err, rows) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send();
+      return;
+    }
+    res.send({
+      message: `post is downvoted at ID: ${req.params.id}`,
+    });
+  });
 });
 
 app.listen(PORT, () => {
