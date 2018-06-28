@@ -14,7 +14,7 @@ const conn = mysql.createConnection({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
 });
-
+// return all posts endpoint
 app.get('/posts', (req, res) => {
   let sql = `SELECT * FROM posts;`;
 
@@ -30,7 +30,7 @@ app.get('/posts', (req, res) => {
     });
   });
 });
-
+// add new post endpoint
 app.post('/posts', (req, res) => {
 
   let sqlPost = `INSERT INTO posts (title, url) VALUES ('${req.body.title}', '${req.body.url}');`;
@@ -47,7 +47,7 @@ app.post('/posts', (req, res) => {
     });
   });
 });
-
+// upvote post endpoint
 app.put('/posts/:id/upvote', (req, res) => {
   let sql = `UPDATE posts set score = score + 1 WHERE id = ${req.params.id};`;
 
@@ -62,7 +62,7 @@ app.put('/posts/:id/upvote', (req, res) => {
     });
   });
 });
-
+// downvote post endpoint
 app.put('/posts/:id/downvote', (req, res) => {
   let sql = `UPDATE posts set score = score - 1 WHERE id = ${req.params.id};`;
 
@@ -77,7 +77,7 @@ app.put('/posts/:id/downvote', (req, res) => {
     });
   });
 });
-
+// delete post endpoint
 app.delete('/posts/:id', (req, res) => {
   let sql = `DELETE FROM posts WHERE id = ${req.params.id};`;
 
@@ -92,7 +92,7 @@ app.delete('/posts/:id', (req, res) => {
     });
   });
 });
-
+// modify title endpoint
 app.put('/posts/:id', (req, res) => {
   let sql = `UPDATE posts SET title = "${req.body.modTitle}" WHERE id = ${req.params.id};`;
 
