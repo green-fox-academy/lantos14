@@ -2,7 +2,7 @@ body, html {
   width: 1300px;
   height: 1300px;
   margin: 0;
-  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  font-family: 'Crimson Text', serif;
 }
 
 img {
@@ -35,4 +35,55 @@ img {
   box-shadow: 10px 5px 5px grey;
   height: 300px;
   width: 400px;
+}
+
+.post {
+  display: flex;
+  justify-content: space-around;
+  max-width: 650px;
+  margin: 20px 0;
+}
+
+.post-content {
+  border: 5px groove #e9d2c0;
+  background: #e9d2c0;
+  box-shadow: 5px 5px 3px grey;
+  width: 600px;
+}
+
+.vote-section {
+  margin: auto 20px;
+}
+
+.vote-btn, .score-value {
+  width: 30px;
+  height: 30px;
+}
+
+.vote-btn:hover {
+  filter: brightness(115%);
+}
+
+.score-value {
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+  color: grey;
+  text-shadow: 5px;
+}
+
+#submit-post-btn {
+  background: rgb(221, 208, 208);
+  border-radius: 10px;
+  outline: none;
+  text-decoration: unset;
+  font-size: 25px;
+}
+
+#submit-post-btn:hover {
+  filter: brightness(110%);
+}
+
+#submit-post-btn:active {
+  filter: brightness(90%);
 }
