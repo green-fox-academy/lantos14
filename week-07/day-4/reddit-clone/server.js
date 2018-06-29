@@ -4,9 +4,11 @@ require('dotenv').config();
 const express = require('express');
 const mysql = require('mysql');
 const app = express();
+const path = require('path');
 const PORT = 3000;
 
 app.use(express.json());
+app.use(express.static('public'))
 
 const conn = mysql.createConnection({
   host: process.env.DB_HOST,
@@ -14,9 +16,14 @@ const conn = mysql.createConnection({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
 });
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, './public/index.html'));
+});
+
 // return all posts endpoint
 app.get('/posts', (req, res) => {
-  let sql = `SELECT * FROM posts;`;
+  let sql = `SELECT title, url, timestamp, score, user_name FROM posts INNER JOIN users ON posts.owner_id = users.user_id;`;
 
   conn.query(sql, (err, rows) => {
 
