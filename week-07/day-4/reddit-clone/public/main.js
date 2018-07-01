@@ -16,6 +16,7 @@ http.onload = () => {
     // parent post div
     let newPostDiv = document.createElement('div');
     newPostDiv.setAttribute('class', 'post');
+    newPostDiv.setAttribute('id', `post${post.id}`);
     // voteDiv add-ons
     let newVoteDiv = document.createElement('div');
     newVoteDiv.setAttribute('class', 'vote-section');
@@ -23,6 +24,20 @@ http.onload = () => {
     let newUpvoteImg = document.createElement('img');
     newUpvoteImg.setAttribute('src', './upvote.png');
     newUpvoteImg.setAttribute('class', 'up-vote vote-btn');
+    newUpvoteImg.addEventListener('click', () => {
+      let postId = event.currentTarget.parentElement.parentElement.getAttribute('id').slice(4);
+      let httpUpvote = new XMLHttpRequest();
+      httpUpvote.open("PUT", `http://localhost:3000/posts/${postId}/upvote`, true);
+      httpUpvote.send();
+
+      let httpUpdateScore = new XMLHttpRequest();
+      httpUpdateScore.open("GET", "http://localhost:3000/posts", true);
+      httpUpdateScore.onload = () => {
+        let post = document.querySelector(`#post${postId}`)
+        console.log(post.children); //need to find score-value to update it
+      }
+      httpUpdateScore.send();
+    });
 
     let newScore = document.createElement('p');
     newScore.setAttribute('class', 'score-value');
