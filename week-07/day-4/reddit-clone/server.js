@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
 
 // return all posts endpoint
 app.get('/posts', (req, res) => {
-  let sql = `SELECT title, url, timestamp, score, user_name FROM posts INNER JOIN users ON posts.owner_id = users.user_id;`;
+  let sql = `SELECT id, title, url, timestamp, score, user_name FROM posts INNER JOIN users ON posts.owner_id = users.user_id;`;
 
   conn.query(sql, (err, rows) => {
 
