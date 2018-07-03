@@ -13,9 +13,12 @@ let interval = setInterval(() => {
   let candyNum = parseInt(candyCounter.innerText);
   if (candyNum >= 10000) {
     let winScreen = document.createElement('h1');
-    winScreen.innerHTML = `🍬🍬🍬🍬🍬🍬🍬🍬🍬🍬<br>Congratulations, you have diabetes<br>🍬🍬🍬🍬🍬🍬🍬🍬🍬🍬`;
+    winScreen.innerHTML = `🍬🍬🍬🍬🍬🍬🍬🍬🍬🍬🍬🍬<br>Congratulations, you have diabetes<br>🍬🍬🍬🍬🍬🍬🍬🍬🍬🍬🍬🍬`;
     body.appendChild(winScreen);
     clearInterval(interval);
+    createCandyBtn.disabled = true;
+    buyLollyBtn.disabled = true;
+    candyRainBtn.disabled = true;
   } else {
   if (!rainisOn) {
     let growth = Math.floor((lollyCounter.innerText.length / 2) / 10)
@@ -35,7 +38,7 @@ let interval = setInterval(() => {
 // create candy button
 createCandyBtn.addEventListener('click', () => {
   let candyNum = parseInt(candyCounter.innerText);
-  candyNum += 1000;
+  candyNum += 1;
   candyCounter.innerText = candyNum;
   console.log(`10 candy is created with create btn`);
 });
