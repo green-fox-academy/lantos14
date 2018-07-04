@@ -1,11 +1,19 @@
 'use strict';
 
-document.querySelector('#genre');
-document.querySelector('#genre');
+const genreMenu = document.querySelector('#genre');
+const movieMenu = document.querySelector('#movies');
 
-document.querySelector('#movies');
-document.querySelectorAll('.scifi');
-document.querySelectorAll('.drama');
-document.querySelectorAll('.comedy');
+const changeMovieList = (genre) => {  
+  // clear earlier choice
+  document.querySelectorAll(`#movies option`).forEach(opt => {
+    opt.style.display = "none";
+  }); 
+  // show selected movies
+  document.querySelectorAll(`.${genre}`).forEach(opt => {
+    opt.style.display = "inherit";
+  }); 
+}
 
-console.log
+genreMenu.addEventListener('change', (e) => {
+  changeMovieList(e.target.value);
+});
