@@ -5,6 +5,7 @@ const btnCats = document.querySelector('#catBtn');
 const btnSign = document.querySelector('#signBtn');
 const radioCheckSignNo = document.querySelector('#no');
 const fishSelect = document.querySelector('#fish');
+const form = document.querySelector('form');
 
 // listener for enabling sign up button
 const enableSignUp = value => {
@@ -16,12 +17,11 @@ const enableSignUp = value => {
     btnSign.disabled = true;
   }
 }
-// adding listeners to every radio input
-radBtnAll.forEach(btn => {
-  btn.addEventListener('change', e => {
-    enableSignUp(e.path[0].value);
-  });
+
+form.addEventListener('change', e => {
+enableSignUp(e.target.value)
 });
+
 // sign up button alert
 btnSign.addEventListener('click', () => {
   if (radioCheckSignNo.checked && fishSelect.checked) {
