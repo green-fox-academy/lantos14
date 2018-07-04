@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>button disable</title>
+</head>
+<body>
+  <form>
+    <label>
+      <span>What is your favorite pet?</span><br>
+      <input type="radio" name="pet" value="dog" class="favPet" id="dog">Dog
+      <input type="radio" name="pet" value="cat" class="favPet" id="cat">Cat
+      <input type="radio" name="pet" value="fish" class="favPet">Viktor the goldfish
+    </label><br>
+    <label>
+      <span>Do you want to sign up for cat facts?</span><br>
+      <input type="radio" name="sign-up" id="yes">Yes
+      <input type="radio" name="sign-up" id="no">No
+    </label><br>
+
+    <button id="catBtn" disabled>I love Cats!</button>
+    <button id="signBtn" disabled>Sign Up!</button>
+  </form>
+  <script>
+
+    const radioFavPet = document.querySelectorAll('.favPet');
+    const btnCats = document.querySelector('#catBtn');
+    const btnSign = document.querySelector('#signBtn');
+  
+  enableSignUp = value => {
+    if (value === 'dog' || value === 'cat') {
+    btnSign.disabled = false;
+    } else {
+      btnSign.disabled = true;
+    }
+  }
+
+  radioFavPet.forEach(btn => {
+    btn.addEventListener('change', e => {
+    enableSignUp(e.path[0].value);
+    });
+  });
+  </script>
+</body>
+</html>
