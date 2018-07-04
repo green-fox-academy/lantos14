@@ -8,10 +8,23 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: 'Patua One', cursive;
 }
 
 div {
   background: #dedede;
   padding: 50px;
   border-radius: 8px;
+}
+
+select {
+  color: rgb(49, 49, 114);
+  padding: 10px;
+  text-align: center;
+  font-size: 20px;
+}
+
+
+span {
+  font-size: 18px;
 }
