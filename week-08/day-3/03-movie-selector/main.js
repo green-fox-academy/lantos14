@@ -17,6 +17,9 @@ const changeMovieList = (genre) => {
 
 genreMenu.addEventListener('change', (e) => {
   changeMovieList(e.target.value);
+  // clearing movie list
+  movieMenu[0].selected = true;
+  result.innerText = `-`
 });
 
 movieMenu.addEventListener('change', (e) => {
