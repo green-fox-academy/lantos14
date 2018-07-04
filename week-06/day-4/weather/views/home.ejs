@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Weather Forecast</title>
+  <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <script src="main.js"></script> -->
+</head>
+<body>
+  
+  <ul>Weather Forecast</ul>
+  <% forecasts.forEach (city => { %>
+    <li><%= city.city %>, <%= city.location %></li>
+  <% }) %>
+</body>
+</html>
