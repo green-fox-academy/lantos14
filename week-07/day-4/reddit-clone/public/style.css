@@ -13,11 +13,14 @@ img {
 
 #title {
   border: 5px groove lightgoldenrodyellow;
+  border-radius: 10px;
   margin: 0;
+  margin-left: 100px;
+  background: rgba(255,255,255,0.7);
 }
 
 #content {
-  background: lightgoldenrodyellow;
+  background: #fff;
   display: flex;
   justify-content: space-around;
   padding-top: 10px;
@@ -39,6 +42,12 @@ img {
   width: 400px;
 }
 
+header {
+  background: url("./cover.jpg") no-repeat;
+  padding-top: 500px;
+  background-size: 110%;
+}
+
 .post {
   display: flex;
   justify-content: space-around;
@@ -48,15 +57,21 @@ img {
 
 .post-content {
   border: 5px groove #e9d2c0;
-  background: #e9d2c0;
+  background: #f7decb;
   box-shadow: 5px 5px 3px grey;
   width: 600px;
   overflow: hidden;
   position: relative;
+  transition: height;
+  transition-duration: 0.5s;
+}
+
+.post-heading {
+  padding-right: 60px;
 }
 
 .wrapped {
-  height: 100px;
+  height: 90px;
 }
 
 .roll-btn {
@@ -69,6 +84,7 @@ img {
   height: 40px;
   text-align: center;
   line-height: 15px;
+  border-radius: 15px;
 }
 
 .roll-btn:hover {
