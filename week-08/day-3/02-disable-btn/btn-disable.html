@@ -8,38 +8,40 @@
   <form>
     <label>
       <span>What is your favorite pet?</span><br>
-      <input type="radio" name="pet" value="dog" class="favPet" id="dog">Dog
-      <input type="radio" name="pet" value="cat" class="favPet" id="cat">Cat
-      <input type="radio" name="pet" value="fish" class="favPet">Viktor the goldfish
+      <input type="radio" name="pet" value="dog" class="favPet radio-btn" id="dog">Dog
+      <input type="radio" name="pet" value="cat" class="favPet radio-btn" id="cat">Cat
+      <input type="radio" name="pet" value="fish" class="favPet radio-btn">Viktor the goldfish
     </label><br>
     <label>
       <span>Do you want to sign up for cat facts?</span><br>
-      <input type="radio" name="sign-up" id="yes">Yes
-      <input type="radio" name="sign-up" id="no">No
+      <input type="radio" name="sign-up" value="yes" class="sign-up-btn radio-btn" id="yes">Yes
+      <input type="radio" name="sign-up" value="no" class="sign-up-btn radio-btn" id="no">No
     </label><br>
 
     <button id="catBtn" disabled>I love Cats!</button>
     <button id="signBtn" disabled>Sign Up!</button>
   </form>
   <script>
-
-    const radioFavPet = document.querySelectorAll('.favPet');
+    const radBtnAll = document.querySelectorAll('.radio-btn');
     const btnCats = document.querySelector('#catBtn');
     const btnSign = document.querySelector('#signBtn');
+    const radioCheckSignNo = document.querySelector('#no');
   
   enableSignUp = value => {
-    if (value === 'dog' || value === 'cat') {
+    
+    if ((value === 'dog' || value === 'cat' || value === 'yes') && !radioCheckSignNo.checked ) {
     btnSign.disabled = false;
     } else {
       btnSign.disabled = true;
     }
   }
 
-  radioFavPet.forEach(btn => {
+  radBtnAll.forEach(btn => {
     btn.addEventListener('change', e => {
     enableSignUp(e.path[0].value);
     });
   });
+
   </script>
 </body>
 </html>
