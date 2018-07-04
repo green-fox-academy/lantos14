@@ -22,25 +22,29 @@
     <button id="signBtn" disabled>Sign Up!</button>
   </form>
   <script>
+
     const radBtnAll = document.querySelectorAll('.radio-btn');
     const btnCats = document.querySelector('#catBtn');
     const btnSign = document.querySelector('#signBtn');
     const radioCheckSignNo = document.querySelector('#no');
-  
-  enableSignUp = value => {
-    
-    if ((value === 'dog' || value === 'cat' || value === 'yes') && !radioCheckSignNo.checked ) {
-    btnSign.disabled = false;
-    } else {
-      btnSign.disabled = true;
+    // listener for enabling sign up button
+    enableSignUp = value => {
+      if ((value === 'dog' || value === 'cat' || value === 'yes') && !radioCheckSignNo.checked ) {
+      btnSign.disabled = false;
+      } else {
+        btnSign.disabled = true;
+      }
     }
-  }
 
-  radBtnAll.forEach(btn => {
-    btn.addEventListener('change', e => {
-    enableSignUp(e.path[0].value);
+    radBtnAll.forEach(btn => {
+      btn.addEventListener('change', e => {
+      enableSignUp(e.path[0].value);
+      });
     });
-  });
+    // sign up alert
+    btnSign.addEventListener('click', () => {
+      alert("Thank you, you've successfully signed up for cat facts");
+    });
 
   </script>
 </body>
