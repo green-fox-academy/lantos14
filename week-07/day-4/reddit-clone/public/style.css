@@ -128,11 +128,12 @@ header {
   border-radius: 10px;
   padding: 5px;
   margin-left: 10px;
+  margin-top: 20px;
   outline: none;
   text-decoration: unset;
   font-size: 25px;
   color: black;
-  box-shadow: 2px 3px 5px rgb(73, 72, 72);
+  box-shadow: 2px 3px 5px rgb(46, 29, 29);
 }
 
 p {
@@ -146,4 +147,19 @@ p {
 
 #submit-post-btn:active {
   filter: brightness(90%);
+}
+
+#submit-tab {
+  margin-left: 120px;
+  width: 300px;
+}
+
+input {
+  padding: 10px;
+  font-size: 20px;
+  margin: 5px;
+}
+
+legend {
+  font-size: 26px;
 }
