@@ -47,6 +47,22 @@ http.onload = () => {
     let newDownvoteImg = document.createElement('img');
     newDownvoteImg.setAttribute('src', './downvote.png');
     newDownvoteImg.setAttribute('class', 'down-vote vote-btn');
+    newDownvoteImg.addEventListener('click', () => {
+      let postId = event.currentTarget.parentElement.parentElement.getAttribute('id').slice(4);
+
+      let httpDownvote = new XMLHttpRequest();
+      
+      httpDownvote.open("PUT", `http://localhost:3000/posts/${postId}/downvote`, true);
+      httpDownvote.onload = () => {
+        
+        let newScoreResponse = JSON.parse(httpDownvote.response)
+        const newScore = newScoreResponse.message[0].score;
+        
+        const actualPost = document.querySelector(`#post${postId}`)
+        actualPost.children[0].children[1].innerText = newScore;
+      }
+      httpDownvote.send();
+    });
 
     // postContent add-ons
     let newPostContentDiv = document.createElement('div');

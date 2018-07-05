@@ -87,8 +87,17 @@ app.put('/posts/:id/downvote', (req, res) => {
       res.status(500).send();
       return;
     }
+  });
+
+  let getScoreSql = `SELECT score FROM posts WHERE id = ${req.params.id};`;
+  conn.query(getScoreSql, (err, rows) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send();
+      return;
+    }
     res.send({
-      message: `post is downvoted at ID: ${req.params.id}`,
+      message: rows,
     });
   });
 });
