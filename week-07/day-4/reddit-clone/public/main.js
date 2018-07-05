@@ -72,9 +72,10 @@ http.onload = () => {
     newTitle.setAttribute('class', 'post-heading');
     newTitle.innerText = post.title;
 
-    let BtnRoll = document.createElement('btn');
+    let BtnRoll = document.createElement('img');
     BtnRoll.innerText = `...`;
     BtnRoll.setAttribute('class', 'roll-btn');
+    BtnRoll.setAttribute('src', 'expand.png');
     BtnRoll.addEventListener('click', () => {
       let parent = event.currentTarget.parentElement;
       if (parent.className === 'post-content') {
