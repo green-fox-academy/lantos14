@@ -27,13 +27,13 @@ http.onload = () => {
       let postId = event.currentTarget.parentElement.parentElement.getAttribute('id').slice(4);
 
       let httpUpvote = new XMLHttpRequest();
-      
+
       httpUpvote.open("PUT", `http://localhost:3000/posts/${postId}/upvote`, true);
       httpUpvote.onload = () => {
-        
+
         let newScoreResponse = JSON.parse(httpUpvote.response)
         const newScore = newScoreResponse.message[0].score;
-        
+
         const actualPost = document.querySelector(`#post${postId}`)
         actualPost.children[0].children[1].innerText = newScore;
       }
@@ -51,13 +51,13 @@ http.onload = () => {
       let postId = event.currentTarget.parentElement.parentElement.getAttribute('id').slice(4);
 
       let httpDownvote = new XMLHttpRequest();
-      
+
       httpDownvote.open("PUT", `http://localhost:3000/posts/${postId}/downvote`, true);
       httpDownvote.onload = () => {
-        
+
         let newScoreResponse = JSON.parse(httpDownvote.response)
         const newScore = newScoreResponse.message[0].score;
-        
+
         const actualPost = document.querySelector(`#post${postId}`)
         actualPost.children[0].children[1].innerText = newScore;
       }
@@ -89,10 +89,15 @@ http.onload = () => {
     newImg.setAttribute('src', `${post.url}`);
 
     let newBtnline = document.createElement('div');
-    newBtnline.setAttribute('class','btn-line');
-    let newModifyBtn = document.createElement('a');
+    newBtnline.setAttribute('class', 'btn-line');
+    let newModifyBtn = document.createElement('button');
     newModifyBtn.innerText = 'modify';
-    newModifyBtn.setAttribute('href', './modify.html');
+    newModifyBtn.setAttribute('class', 'btnMod');
+    newModifyBtn.setAttribute('data-opened', 'false');
+    newModifyBtn.addEventListener('click', (e) => {
+      e.target.parentElement.parentElement.children[5].style.display = ' block'
+    });
+
     let newDelBtn = document.createElement('a');
     newDelBtn.innerText = 'delete';
     newDelBtn.addEventListener('click', () => {
@@ -106,6 +111,44 @@ http.onload = () => {
     newOwnerP.setAttribute('class', 'owner-p');
     newOwnerP.innerHTML = `posted by <em>${post.user_name}<em> on <em> ${formatTimestamp(post.timestamp)}<em>`;
 
+    let inputDiv = document.createElement('div');
+    inputDiv.setAttribute('class', 'mod-input-div');
+    inputDiv.style.display = "none"
+    let modInputTitle = document.createElement('input');
+    modInputTitle.setAttribute('type', 'text');
+    modInputTitle.setAttribute('id', 'mod-title-input');
+    modInputTitle.setAttribute('name', 'mod-title');
+    let modInputUrl = document.createElement('input');
+    modInputUrl.setAttribute('type', 'text');
+    modInputUrl.setAttribute('id', 'mod-title-url');
+    modInputUrl.setAttribute('name', 'mod-title-url');
+    let BtnMod = document.createElement('button');
+    BtnMod.innerText = 'Change it!';
+    BtnMod.addEventListener('click', (e) => {
+
+      let modPostId = e.target.parentElement.parentElement.parentElement.getAttribute('id').slice(4);
+
+      let httpMod = new XMLHttpRequest();
+
+      httpMod.open('PUT', `http://localhost:3000/posts/${modPostId}`, true);
+      httpMod.setRequestHeader('Content-type', 'application/json');
+
+      httpMod.onload = () => {
+        let currPostTitle = e.target.parentElement.parentElement.parentElement.children[1].children[0]
+        let currPostUrl = e.target.parentElement.parentElement.parentElement.children[1].children[2]
+
+        currPostTitle.innerText = e.target.parentElement.children[0].value
+        currPostUrl.setAttribute('src', `${e.target.parentElement.children[1].value}`) 
+      }
+      httpMod.send(JSON.stringify({
+        modTitle: e.target.parentElement.children[0].value,
+        modUrl: e.target.parentElement.children[1].value
+      }));
+    });
+
+    inputDiv.appendChild(modInputTitle);
+    inputDiv.appendChild(modInputUrl);
+    inputDiv.appendChild(BtnMod);
     // appending
     newVoteDiv.appendChild(newUpvoteImg);
     newVoteDiv.appendChild(newScore);
@@ -116,6 +159,7 @@ http.onload = () => {
     newPostContentDiv.appendChild(newImg);
     newPostContentDiv.appendChild(newBtnline);
     newPostContentDiv.appendChild(newOwnerP);
+    newPostContentDiv.appendChild(inputDiv);
 
     newPostDiv.appendChild(newVoteDiv);
     newPostDiv.appendChild(newPostContentDiv);
