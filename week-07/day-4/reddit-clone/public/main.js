@@ -132,17 +132,30 @@ http.onload = () => {
 
       httpMod.open('PUT', `http://localhost:3000/posts/${modPostId}`, true);
       httpMod.setRequestHeader('Content-type', 'application/json');
+      
+      let modTitle = e.target.parentElement.children[0].value;
+      let modUrl = e.target.parentElement.children[1].value;
 
       httpMod.onload = () => {
         let currPostTitle = e.target.parentElement.parentElement.parentElement.children[1].children[0]
         let currPostUrl = e.target.parentElement.parentElement.parentElement.children[1].children[2]
 
-        currPostTitle.innerText = e.target.parentElement.children[0].value
-        currPostUrl.setAttribute('src', `${e.target.parentElement.children[1].value}`) 
+        if (modTitle === '') {
+          modTitle = undefined;
+        } else {
+          currPostTitle.innerText = e.target.parentElement.children[0].value
+        }
+
+        if (modUrl === '') {
+          modUrl = undefined;
+        } else {
+          currPostUrl.setAttribute('src', `${e.target.parentElement.children[1].value}`)
+        }
       }
+
       httpMod.send(JSON.stringify({
-        modTitle: e.target.parentElement.children[0].value,
-        modUrl: e.target.parentElement.children[1].value
+        modTitle,
+        modUrl
       }));
     });
 
