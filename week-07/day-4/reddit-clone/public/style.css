@@ -162,6 +162,7 @@ input {
   padding: 10px;
   font-size: 20px;
   margin: 5px;
+  border-radius: 5px;
 }
 
 legend {

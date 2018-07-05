@@ -95,7 +95,16 @@ http.onload = () => {
     newModifyBtn.setAttribute('class', 'btnMod');
     newModifyBtn.setAttribute('data-opened', 'false');
     newModifyBtn.addEventListener('click', (e) => {
-      e.target.parentElement.parentElement.children[5].style.display = ' block'
+      let modDiv = e.target.parentElement.parentElement.children[5];
+      
+      if (newModifyBtn.dataset.opened === 'false') {
+        modDiv.style.display = 'block';
+        newModifyBtn.dataset.opened = 'true';
+      } else {
+        modDiv.style.display = 'none';
+        newModifyBtn.dataset.opened = 'false';
+      }
+
     });
 
     let newDelBtn = document.createElement('a');
@@ -114,43 +123,58 @@ http.onload = () => {
     let inputDiv = document.createElement('div');
     inputDiv.setAttribute('class', 'mod-input-div');
     inputDiv.style.display = "none"
+
+    let fieldset = document.createElement('fieldset');
+    let legend = document.createElement('legend');
+    legend.innerText = 'Change your post below';
+
     let modInputTitle = document.createElement('input');
     modInputTitle.setAttribute('type', 'text');
     modInputTitle.setAttribute('id', 'mod-title-input');
     modInputTitle.setAttribute('name', 'mod-title');
+    modInputTitle.setAttribute('placeholder', 'New title here');
+
     let modInputUrl = document.createElement('input');
     modInputUrl.setAttribute('type', 'text');
     modInputUrl.setAttribute('id', 'mod-title-url');
     modInputUrl.setAttribute('name', 'mod-title-url');
+    modInputUrl.setAttribute('placeholder', 'New url here');
     let BtnMod = document.createElement('button');
     BtnMod.innerText = 'Change it!';
+
+    // listening for modification
+
     BtnMod.addEventListener('click', (e) => {
 
-      let modPostId = e.target.parentElement.parentElement.parentElement.getAttribute('id').slice(4);
+      let modPostId = e.target.parentElement.parentElement.parentElement.parentElement.getAttribute('id').slice(4);
 
       let httpMod = new XMLHttpRequest();
 
       httpMod.open('PUT', `http://localhost:3000/posts/${modPostId}`, true);
       httpMod.setRequestHeader('Content-type', 'application/json');
-      
-      let modTitle = e.target.parentElement.children[0].value;
-      let modUrl = e.target.parentElement.children[1].value;
+
+      let modTitle = e.target.parentElement.children[1].value;
+      let modUrl = e.target.parentElement.children[2].value;
 
       httpMod.onload = () => {
-        let currPostTitle = e.target.parentElement.parentElement.parentElement.children[1].children[0]
-        let currPostUrl = e.target.parentElement.parentElement.parentElement.children[1].children[2]
+
+        let currPostTitle = e.target.parentElement.parentElement.parentElement.parentElement.children[1].children[0]
+        let currPostUrl = e.target.parentElement.parentElement.parentElement.parentElement.children[1].children[2]
 
         if (modTitle === '') {
           modTitle = undefined;
         } else {
-          currPostTitle.innerText = e.target.parentElement.children[0].value
+          currPostTitle.innerText = e.target.parentElement.children[1].value
         }
 
         if (modUrl === '') {
           modUrl = undefined;
         } else {
-          currPostUrl.setAttribute('src', `${e.target.parentElement.children[1].value}`)
+          currPostUrl.setAttribute('src', `${e.target.parentElement.children[2].value}`)
         }
+
+        e.target.parentElement.parentElement.style.display = 'none';
+        newModifyBtn.dataset.opened = 'false'
       }
 
       httpMod.send(JSON.stringify({
@@ -159,9 +183,12 @@ http.onload = () => {
       }));
     });
 
-    inputDiv.appendChild(modInputTitle);
-    inputDiv.appendChild(modInputUrl);
-    inputDiv.appendChild(BtnMod);
+    fieldset.appendChild(legend);
+    fieldset.appendChild(modInputTitle);
+    fieldset.appendChild(modInputUrl);
+    fieldset.appendChild(BtnMod);
+    inputDiv.appendChild(fieldset);
+
     // appending
     newVoteDiv.appendChild(newUpvoteImg);
     newVoteDiv.appendChild(newScore);
@@ -181,3 +208,4 @@ http.onload = () => {
   });
 }
 http.send();
+
