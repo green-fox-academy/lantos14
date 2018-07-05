@@ -9,9 +9,7 @@ submitNewBtn.addEventListener('click', () => {
   
   httpSubmit.open('POST', 'http://localhost:3000/posts', true);
   httpSubmit.setRequestHeader('Content-type', 'application/json');
-  httpSubmit.onload = () => {
-
-  }
+  httpSubmit.onload = () => { }
   httpSubmit.send(JSON.stringify({
       title: inputTitle.value,
       url: inputUrl.value

@@ -13,8 +13,8 @@ submitNewBtn.addEventListener('click', () => {
 
   }
   httpMod.send(JSON.stringify({
-      title: inputTitle.value,
-      url: inputUrl.value
+      modTitle: inputTitle.value,
+      modUrl: inputUrl.value
     }));
 
 window.location.replace("http://localhost:3000");
