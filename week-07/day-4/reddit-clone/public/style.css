@@ -68,6 +68,7 @@ header {
 
 .post-heading {
   padding-right: 60px;
+  min-height: 53px;
 }
 
 .wrapped {
@@ -123,11 +124,20 @@ header {
 }
 
 #submit-post-btn {
-  background: rgb(221, 208, 208);
+  background: rgb(255, 251, 147);
   border-radius: 10px;
+  padding: 5px;
+  margin-left: 10px;
   outline: none;
   text-decoration: unset;
   font-size: 25px;
+  color: black;
+  box-shadow: 2px 3px 5px rgb(73, 72, 72);
+}
+
+p {
+  font-size: 18px;
+  padding: 10px;
 }
 
 #submit-post-btn:hover {
