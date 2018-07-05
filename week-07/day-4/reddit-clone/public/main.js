@@ -107,10 +107,15 @@ http.onload = () => {
 
     });
 
-    let newDelBtn = document.createElement('a');
+    let newDelBtn = document.createElement('button');
     newDelBtn.innerText = 'delete';
-    newDelBtn.addEventListener('click', () => {
-      alert('Are you sure');
+    newDelBtn.addEventListener('click', (e) => {
+      let postID = e.target.parentElement.parentElement.parentElement.getAttribute('id').slice(4);
+      console.log(postID);
+      
+      let httpDel = new XMLHttpRequest();
+      httpDel.open('DELETE', `http://localhost:3000/posts/${postID}`);
+      httpDel.send(); 
     });
 
     newBtnline.appendChild(newModifyBtn);

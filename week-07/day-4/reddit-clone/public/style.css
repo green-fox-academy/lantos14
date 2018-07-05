@@ -129,8 +129,9 @@ header {
   padding: 5px;
   margin: 10px;
   outline: none;
+  font-family: 'Cutive Mono', monospace;
   text-decoration: unset;
-  font-size: 25px;
+  font-size: 30px;
   color: black;
   box-shadow: 2px 3px 5px rgb(46, 29, 29);
 }
