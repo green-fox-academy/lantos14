@@ -11,7 +11,6 @@ function formatTimestamp(timestamp) {
 http.open("GET", "http://localhost:3000/posts", true);
 http.onload = () => {
   let response = JSON.parse(http.response);
-  console.log(response);
   response.posts.forEach(post => {
     // parent post div
     let newPostDiv = document.createElement('div');
@@ -26,17 +25,19 @@ http.onload = () => {
     newUpvoteImg.setAttribute('class', 'up-vote vote-btn');
     newUpvoteImg.addEventListener('click', () => {
       let postId = event.currentTarget.parentElement.parentElement.getAttribute('id').slice(4);
-      let httpUpvote = new XMLHttpRequest();
-      httpUpvote.open("PUT", `http://localhost:3000/posts/${postId}/upvote`, true);
-      httpUpvote.send();
 
-      let httpUpdateScore = new XMLHttpRequest();
-      httpUpdateScore.open("GET", "http://localhost:3000/posts", true);
-      httpUpdateScore.onload = () => {
-        let post = document.querySelector(`#post${postId}`)
-        console.log(post.children); //need to find score-value to update it
+      let httpUpvote = new XMLHttpRequest();
+      
+      httpUpvote.open("PUT", `http://localhost:3000/posts/${postId}/upvote`, true);
+      httpUpvote.onload = () => {
+        
+        let newScoreResponse = JSON.parse(httpUpvote.response)
+        const newScore = newScoreResponse.message[0].score;
+        
+        const actualPost = document.querySelector(`#post${postId}`)
+        actualPost.children[0].children[1].innerText = newScore;
       }
-      httpUpdateScore.send();
+      httpUpvote.send();
     });
 
     let newScore = document.createElement('p');

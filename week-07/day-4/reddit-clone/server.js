@@ -57,15 +57,23 @@ app.post('/posts', (req, res) => {
 // upvote post endpoint
 app.put('/posts/:id/upvote', (req, res) => {
   let sql = `UPDATE posts set score = score + 1 WHERE id = ${req.params.id};`;
-
   conn.query(sql, (err, rows) => {
     if (err) {
       console.log(err);
       res.status(500).send();
       return;
     }
+  });
+
+  let getScoreSql = `SELECT score FROM posts WHERE id = ${req.params.id};`;
+  conn.query(getScoreSql, (err, rows) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send();
+      return;
+    }
     res.send({
-      message: `post is upvoted at ID: ${req.params.id}`,
+      message: rows,
     });
   });
 });
