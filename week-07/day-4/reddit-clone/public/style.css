@@ -122,17 +122,22 @@ header {
   color: grey;
 }
 
-#submit-post-btn {
+#submit-post-btn, a {
+  display: inline-block;
   background: rgb(255, 251, 147);
   border-radius: 10px;
   padding: 5px;
-  margin-left: 10px;
-  margin-top: 20px;
+  margin: 10px;
   outline: none;
   text-decoration: unset;
   font-size: 25px;
   color: black;
   box-shadow: 2px 3px 5px rgb(46, 29, 29);
+}
+
+#back-to-main {
+  font-size: 20px;
+  background: rgb(254, 252, 200);
 }
 
 p {
@@ -150,7 +155,7 @@ p {
 
 #submit-tab {
   margin-left: 120px;
-  width: 300px;
+  width: 500px;
 }
 
 input {

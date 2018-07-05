@@ -5,18 +5,18 @@ const inputUrl = document.querySelector('#url-input');
 const submitNewBtn = document.querySelector('#submit-post-btn');
 
 submitNewBtn.addEventListener('click', () => {
-  const httpSubmit = new XMLHttpRequest;
+  const httpMod = new XMLHttpRequest;
   
-  httpSubmit.open('POST', 'http://localhost:3000/posts', true);
-  httpSubmit.setRequestHeader('Content-type', 'application/json');
-  httpSubmit.onload = () => {
+  httpMod.open('PUT', `http://localhost:3000/posts/${id}`, true);
+  httpMod.setRequestHeader('Content-type', 'application/json');
+  httpMod.onload = () => {
 
   }
-  httpSubmit.send(JSON.stringify({
+  httpMod.send(JSON.stringify({
       title: inputTitle.value,
       url: inputUrl.value
     }));
 
 window.location.replace("http://localhost:3000");
-alert(`your post has been recorded in history`)
+alert(`your post has been changed`)
 });

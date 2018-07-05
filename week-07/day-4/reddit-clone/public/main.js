@@ -88,6 +88,20 @@ http.onload = () => {
     let newImg = document.createElement('img');
     newImg.setAttribute('src', `${post.url}`);
 
+    let newBtnline = document.createElement('div');
+    newBtnline.setAttribute('class','btn-line');
+    let newModifyBtn = document.createElement('a');
+    newModifyBtn.innerText = 'modify';
+    newModifyBtn.setAttribute('href', './modify.html');
+    let newDelBtn = document.createElement('a');
+    newDelBtn.innerText = 'delete';
+    newDelBtn.addEventListener('click', () => {
+      alert('Are you sure');
+    });
+
+    newBtnline.appendChild(newModifyBtn);
+    newBtnline.appendChild(newDelBtn);
+
     let newOwnerP = document.createElement('p');
     newOwnerP.setAttribute('class', 'owner-p');
     newOwnerP.innerHTML = `posted by <em>${post.user_name}<em> on <em> ${formatTimestamp(post.timestamp)}<em>`;
@@ -100,6 +114,7 @@ http.onload = () => {
     newPostContentDiv.appendChild(newTitle);
     newPostContentDiv.appendChild(BtnRoll);
     newPostContentDiv.appendChild(newImg);
+    newPostContentDiv.appendChild(newBtnline);
     newPostContentDiv.appendChild(newOwnerP);
 
     newPostDiv.appendChild(newVoteDiv);
