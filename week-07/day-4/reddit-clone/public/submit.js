@@ -16,4 +16,7 @@ submitNewBtn.addEventListener('click', () => {
       title: inputTitle.value,
       url: inputUrl.value
     }));
+
+window.location.replace("http://localhost:3000");
+alert(`your post has been recorded in history`)
 });
