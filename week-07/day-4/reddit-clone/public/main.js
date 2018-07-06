@@ -171,31 +171,20 @@ const fillFlow = () => {
 
       BtnMod.addEventListener('click', (e) => {
 
-        let modPostId = e.target.dataset.id;
+        const modPostId = e.target.dataset.id;
         
-        let httpMod = new XMLHttpRequest();
+        const httpMod = new XMLHttpRequest();
 
         httpMod.open('PUT', `http://localhost:3000/posts/${modPostId}`, true);
         httpMod.setRequestHeader('Content-type', 'application/json');
 
-        let modTitle = document.querySelector(`input[name='mod-title'][data-id='${post.id}'`).value;
-        let modUrl = document.querySelector(`input[name='mod-title-url'][data-id='${post.id}'`).value;
-        let currPostTitle = e.target.parentElement.parentElement.parentElement.parentElement.children[1].children[0]
-        let currPostUrl = e.target.parentElement.parentElement.parentElement.parentElement.children[1].children[2]
+        const modTitle = document.querySelector(`input[name='mod-title'][data-id='${post.id}'`).value;
+        const modUrl = document.querySelector(`input[name='mod-title-url'][data-id='${post.id}'`).value;
+        const currPostTitle = document.querySelector(`.post-heading[data-id='${post.id}'`);
+        const currPostUrl = document.querySelector(`.post-image[data-id='${post.id}'`);
 
-        console.log(currPostTitle);
-        console.log(currPostUrl);
-
-        console.log(document.querySelector(`.post-heading[data-id='${post.id}'`));
-        console.log(document.querySelector(`.post-image[data-id='${post.id}'`));
         httpMod.onload = () => {
-
-
-
-          // let currPostTitle = document.querySelector(`.post-heading[data-id='${post.id}'`);
-          // let currPostUrl = document.querySelector(`img[data-id='${post.id}'`);
           
-
           if (modTitle === '') {
             modTitle = undefined;
           } else {
@@ -218,7 +207,6 @@ const fillFlow = () => {
         }));
       });
       // appending
-
       fieldset.appendChild(legend);
       fieldset.appendChild(modInputTitle);
       fieldset.appendChild(modInputUrl);
