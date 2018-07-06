@@ -97,6 +97,7 @@ const fillFlow = () => {
       newImg.setAttribute('data-id', `${post.id}`);
 
       // mod and del btn line
+
       let newBtnline = document.createElement('div');
       newBtnline.setAttribute('class', 'btn-line');
       // modify btn
@@ -140,6 +141,7 @@ const fillFlow = () => {
       newOwnerP.innerHTML = `posted by <em>${post.user_name}<em> on <em> ${formatTimestamp(post.timestamp)}<em>`;
 
       // modify input fields
+
       let inputDiv = document.createElement('div');
       inputDiv.setAttribute('class', 'mod-input-div');
       inputDiv.setAttribute('data-id', `${post.id}`);
@@ -169,34 +171,35 @@ const fillFlow = () => {
       BtnMod.addEventListener('click', (e) => {
 
         let modPostId = e.target.dataset.id;
+        
 
         let httpMod = new XMLHttpRequest();
 
         httpMod.open('PUT', `http://localhost:3000/posts/${modPostId}`, true);
         httpMod.setRequestHeader('Content-type', 'application/json');
 
-        let modTitle = document.querySelector(`input[name='mod-title'][data-id='${post.id}'`);
-        let modUrl = document.querySelector(`input[name='mod-title-url'][data-id='${post.id}'`);
+        let modTitle = e.target.parentElement.children[1].value;
+        let modUrl = e.target.parentElement.children[2].value;
 
         httpMod.onload = () => {
 
-          let currPostTitle = document.querySelector(`.post-heading[data-id='${post.id}'`);
-          let currPostUrl = document.querySelector(`img[data-id='${post.id}'`);
+          let currPostTitle = e.target.parentElement.parentElement.parentElement.parentElement.children[1].children[0]
+          let currPostUrl = e.target.parentElement.parentElement.parentElement.parentElement.children[1].children[2]
 
           if (modTitle === '') {
             modTitle = undefined;
           } else {
-            currPostTitle.innerText = modTitle.value
+            currPostTitle.innerText = e.target.parentElement.children[1].value
           }
 
           if (modUrl === '') {
             modUrl = undefined;
           } else {
-            currPostUrl.setAttribute('src', `${modUrl.value}`)
+            currPostUrl.setAttribute('src', `${e.target.parentElement.children[2].value}`)
           }
-          document.querySelector(`.mod-input-div[data-id='${post.id}'`).style.display = 'none';
-          // e.target.parentElement.parentElement.style.display = 'none';
-          newModifyBtn.dataset.opened = 'false';
+
+          e.target.parentElement.parentElement.style.display = 'none';
+          newModifyBtn.dataset.opened = 'false'
         }
 
         httpMod.send(JSON.stringify({
@@ -231,5 +234,6 @@ const fillFlow = () => {
   }
   http.send();
 }
+
 // populate the post flow block
 fillFlow()
