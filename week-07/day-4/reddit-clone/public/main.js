@@ -178,8 +178,8 @@ const fillFlow = () => {
         httpMod.open('PUT', `http://localhost:3000/posts/${modPostId}`, true);
         httpMod.setRequestHeader('Content-type', 'application/json');
 
-        const modTitle = document.querySelector(`input[name='mod-title'][data-id='${post.id}'`).value;
-        const modUrl = document.querySelector(`input[name='mod-title-url'][data-id='${post.id}'`).value;
+        let modTitle = document.querySelector(`input[name='mod-title'][data-id='${post.id}'`).value;
+        let modUrl = document.querySelector(`input[name='mod-title-url'][data-id='${post.id}'`).value;
         const currPostTitle = document.querySelector(`.post-heading[data-id='${post.id}'`);
         const currPostUrl = document.querySelector(`.post-image[data-id='${post.id}'`);
 
@@ -188,16 +188,16 @@ const fillFlow = () => {
           if (modTitle === '') {
             modTitle = undefined;
           } else {
-            currPostTitle.innerText = e.target.parentElement.children[1].value
+            currPostTitle.innerText = modTitle.value;
           }
 
           if (modUrl === '') {
             modUrl = undefined;
           } else {
-            currPostUrl.setAttribute('src', `${e.target.parentElement.children[2].value}`)
+            currPostUrl.setAttribute('src', `${modUrl.value}`);
           }
 
-          e.target.parentElement.parentElement.style.display = 'none';
+          document.querySelector(`.mod-input-div[data-id='${modPostId}'`).style.display = 'none';
           newModifyBtn.dataset.opened = 'false'
         }
 
