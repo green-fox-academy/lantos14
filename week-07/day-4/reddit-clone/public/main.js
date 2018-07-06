@@ -172,14 +172,13 @@ const fillFlow = () => {
 
         let modPostId = e.target.dataset.id;
         
-
         let httpMod = new XMLHttpRequest();
 
         httpMod.open('PUT', `http://localhost:3000/posts/${modPostId}`, true);
         httpMod.setRequestHeader('Content-type', 'application/json');
 
-        let modTitle = e.target.parentElement.children[1].value;
-        let modUrl = e.target.parentElement.children[2].value;
+        let modTitle = document.querySelector(`input[name='mod-title'][data-id='${post.id}'`).value;
+        let modUrl = document.querySelector(`input[name='mod-title-url'][data-id='${post.id}'`).value;
 
         httpMod.onload = () => {
 
