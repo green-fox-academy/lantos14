@@ -94,6 +94,7 @@ const fillFlow = () => {
 
       let newImg = document.createElement('img');
       newImg.setAttribute('src', `${post.url}`);
+      newImg.setAttribute('class', `post-image`);
       newImg.setAttribute('data-id', `${post.id}`);
 
       // mod and del btn line
@@ -179,11 +180,21 @@ const fillFlow = () => {
 
         let modTitle = document.querySelector(`input[name='mod-title'][data-id='${post.id}'`).value;
         let modUrl = document.querySelector(`input[name='mod-title-url'][data-id='${post.id}'`).value;
+        let currPostTitle = e.target.parentElement.parentElement.parentElement.parentElement.children[1].children[0]
+        let currPostUrl = e.target.parentElement.parentElement.parentElement.parentElement.children[1].children[2]
 
+        console.log(currPostTitle);
+        console.log(currPostUrl);
+
+        console.log(document.querySelector(`.post-heading[data-id='${post.id}'`));
+        console.log(document.querySelector(`.post-image[data-id='${post.id}'`));
         httpMod.onload = () => {
 
-          let currPostTitle = e.target.parentElement.parentElement.parentElement.parentElement.children[1].children[0]
-          let currPostUrl = e.target.parentElement.parentElement.parentElement.parentElement.children[1].children[2]
+
+
+          // let currPostTitle = document.querySelector(`.post-heading[data-id='${post.id}'`);
+          // let currPostUrl = document.querySelector(`img[data-id='${post.id}'`);
+          
 
           if (modTitle === '') {
             modTitle = undefined;
