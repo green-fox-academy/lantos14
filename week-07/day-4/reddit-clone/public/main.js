@@ -188,13 +188,13 @@ const fillFlow = () => {
           if (modTitle === '') {
             modTitle = undefined;
           } else {
-            currPostTitle.innerText = modTitle.value;
+            currPostTitle.innerText = modTitle;
           }
 
           if (modUrl === '') {
             modUrl = undefined;
           } else {
-            currPostUrl.setAttribute('src', `${modUrl.value}`);
+            currPostUrl.setAttribute('src', `${modUrl}`);
           }
 
           document.querySelector(`.mod-input-div[data-id='${modPostId}'`).style.display = 'none';
