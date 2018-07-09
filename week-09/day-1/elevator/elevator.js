@@ -30,12 +30,17 @@ class ElevatorModel {
         break;
     }
   }
+  
+  checkOverCrowded() {
+    return (this.occupancy === this.maxPeople);
+  }
+
+  checkFloorIsOutOfRange() {
+    return (this.position === this.maxFloor);
+  }
+
   checkOverUse() {
-    if (this.occupancy >= this.maxPeople || this.position >= this.maxFloor) {
-      return true;
-    } else {
-      return false;
-    }
+    return (this.checkOverCrowded() || this.checkFloorIsOutOfRange())
   }
 
 }
@@ -65,7 +70,6 @@ class ElevatorView {
     });
 
     floorTrList[pos].children[0].className = 'active';
-
   }
 
   renderPeople(num) {
@@ -76,6 +80,7 @@ class ElevatorView {
     });
     activeFloor.innerText = num;
   }
+
 }
 
 class ElevatorController {
@@ -96,10 +101,12 @@ const btnAdd = document.querySelector('#btn-add');
 const btnRemove = document.querySelector('#btn-remove');
 
 btnUp.addEventListener('click', () => {
-  if (!myFirstElevator.model.checkOverUse()) {
+  if (!myFirstElevator.model.checkFloorIsOutOfRange()) {
+    event.target.disabled = false;
     myFirstElevator.model.move('up');
     myFirstElevator.view.renderAll(myFirstElevator.model.position, myFirstElevator.model.occupancy)
   } else {
+    event.target.disabled = true;
     myFirstElevator.view.renderAll(myFirstElevator.model.position, myFirstElevator.model.occupancy)
   }
 });
