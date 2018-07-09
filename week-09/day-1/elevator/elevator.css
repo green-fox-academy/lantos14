@@ -7,6 +7,7 @@ td {
   height: 30px;
   background: #dee;
   border: 1px solid black;
+  transition: all 0.5s;
 }
 
 table {

@@ -42,9 +42,20 @@ class ElevatorModel {
 
 class ElevatorView {
 
+  disableBtns(order) {
+    let btns = document.querySelectorAll('button');
+    btns.forEach(btn => {
+      btn.disabled = order;
+    });
+  }
+
   renderAll(pos, num) {
-    this.renderElevator(pos);
-    this.renderPeople(num);
+    this.disableBtns(true);
+    setTimeout(() => {
+      this.renderElevator(pos);
+      this.renderPeople(num);
+      this.disableBtns(false);
+    }, 1000)
   }
 
   renderElevator(pos) {
