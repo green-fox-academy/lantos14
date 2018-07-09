@@ -29,37 +29,41 @@ function Farm(slots) {
   this.breed = function () {
     if (this.animals.length < slots) {
       this.animals.push(new Animal);
+      console.log('animal is born');
     }
   }
 
   this.slaughter = function () {
-    return this.animals.sort(function (a, b) {
-      b.hunger - a.hunger;
+      this.animals = this.animals.sort(function (a, b) {
+      return b.hunger - a.hunger;
     });
+    this.animals.splice(0, 1);
   }
 
-  this.print = function () {
-    console.log(`The farm has ${this.animals.length} living animals`);
+  this.print = function (message) {
+    console.log(`The farm has ${this.animals.length} living animals. We are ${message}`);
   }
 
   this.progress = function () {
     // random animal activities
     this.animals.forEach(animal => {
-      if (Math.random >= 0.5) {
+      if (Math.random() >= 0.5) {
         animal.eat()
+        console.log('animal ate');
       }
-      if (Math.random >= 0.5) {
+      if (Math.random() >= 0.5) {
         animal.drink()
+        console.log('animal drank');
       }
-      if (Math.random >= 0.5) {
+      if (Math.random() >= 0.5) {
         animal.play()
+        console.log('animal played');
       }
     });
     // calling breed and slaughter
-    this.breed();
     this.slaughter();
+    this.breed();
     // print
-    this.print()
     let printable = '';
     if (this.animals.length === 0) {
       printable = `bankrupt`;
@@ -68,7 +72,9 @@ function Farm(slots) {
     } else {
       printable = 'okay';
     }
-    console.log(`We are ${printable}`);
+    this.print(printable);
+    console.log(this.animals);
+    
   }
 }
 
