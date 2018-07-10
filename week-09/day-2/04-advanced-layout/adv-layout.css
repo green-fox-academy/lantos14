@@ -1,0 +1,80 @@
+body, html {
+  margin: 0;
+}
+
+header {
+  position: absolute;
+  background: purple;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+}
+
+button {
+  width: 100px;
+  height: 50px;
+  margin: 15px 10px;
+  background-color: cyan;
+}
+
+
+p {
+  font-size: 20px;
+  padding: 30px;
+  text-align: justify;
+}
+
+.sub-div1, .sub-div2, .sub-div3, .sub-div4 {
+  background: rgb(36, 179, 36);
+}
+
+
+.red {
+  background: red;
+}
+
+main {
+  display: grid;
+  margin: auto;
+  width: 1000px;
+  height: 900px;
+  grid-template-columns: 1fr 1fr; 
+  grid-template-rows: 1fr 3fr 3fr 1fr; 
+  grid-gap: 15px;
+  grid-template-areas: 
+  "top top"
+  "sub1 sub2"
+  "sub3 sub4"
+  "footer footer"
+}
+
+.top {
+  z-index: 1;
+  background: unset;
+  grid-area: top;
+}
+
+footer {
+  background: grey;
+  grid-area: footer;
+}
+
+.sub-div1 {
+  grid-area: sub1;
+}
+
+.sub-div2 {
+  grid-area: sub2;
+}
+.sub-div3 {
+  grid-area: sub3;
+}
+.sub-div4 {
+  grid-area: sub4;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-gap: 20px;
+  padding: 20px;
+}
