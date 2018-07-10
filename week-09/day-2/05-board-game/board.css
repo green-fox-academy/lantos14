@@ -1,0 +1,47 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 98%;
+  width: 98%;
+  background: black;
+}
+
+main {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(7,1fr);
+  grid-template-rows: repeat(6,1fr);
+  grid-gap: 2px;
+  border: 15px groove rgb(193, 186, 186);
+}
+
+.yellow {
+  background: yellow;
+}
+
+.green {
+background: green;
+grid-row: 2 / 6;
+grid-column: 2 / 7;
+display: grid;
+grid-template-columns: 1fr 1fr;
+grid-template-rows: 1fr 3fr 1fr;
+grid-gap: 30px;
+padding: 50px;
+}
+
+.purple {
+  background: purple;
+  border: 1px solid black;
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+
+h1 {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 100%;
+}
+
