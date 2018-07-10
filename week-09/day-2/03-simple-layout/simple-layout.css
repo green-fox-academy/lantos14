@@ -1,0 +1,53 @@
+html, body {
+  margin: 0;
+}
+
+.content {
+  margin: auto;
+  width: 1200px;
+  height: 800px;
+  bottom: 1px solid black;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr 10fr 1fr;
+}
+
+header {
+  background: purple;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  margin: 0 auto;
+  padding-left: 10%;
+  display: grid;
+  grid-template-columns: repeat(4,100px);
+  grid-template-rows: 1fr;
+  grid-gap: 20px;
+}
+
+p {
+  background: cyan;
+  display: inline-block;
+  width: 100px;
+}
+
+main {
+  background: yellow;
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+
+aside {
+  background: green;
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+
+footer {
+  background: grey;
+  grid-column: 1 / 3;
+  grid-row: 3 / 4;
+}
