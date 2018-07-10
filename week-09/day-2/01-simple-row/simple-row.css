@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+}
+div {
+  display: grid;
+  grid-template-columns: 1fr 60% 1fr;
+  grid-template-rows: 50% 50%;
+  grid-gap: 10px;
+  background: purple;
+  padding: 10px;
+}
+
+.left, .right, .center {
+  height: 100px;
+  line-height: 100px;
+  color: white;
+  text-align: center;
+  align-items: center;
+  grid-row-start: span 2;
+}
+
+.left, .right {
+  background: rgb(194, 194, 1);
+}
+
+.center {
+  background: rgb(125, 187, 32);
+}
