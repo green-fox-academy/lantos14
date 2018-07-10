@@ -29,6 +29,7 @@ grid-template-columns: 1fr 1fr;
 grid-template-rows: 1fr 3fr 1fr;
 grid-gap: 30px;
 padding: 50px;
+box-shadow: inset 0px 0px 30px black;
 }
 
 .purple {
@@ -36,12 +37,29 @@ padding: 50px;
   border: 1px solid black;
   grid-column: 2 / 3;
   grid-row: 2 / 3;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-rows: 1fr 3fr 1fr;
+
 }
 
-h1 {
-  width: 100%;
-  height: 100%;
+.purple h1 {
+  margin: 0;
   text-align: center;
-  line-height: 100%;
+  grid-row: 2 / 3;
+  grid-column: 2 / 3;
 }
 
+.yellow.one, .yellow.twentytwo {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-rows: 1fr 3fr 1fr;
+}
+
+.yellow.one h1, .yellow.twentytwo h1 {
+  grid-row: 2 / 3;
+  grid-column: 2 / 3;
+  font-size: 42px;
+  text-align: center;
+  transform: rotateZ(-45deg) scale(1);
+}
