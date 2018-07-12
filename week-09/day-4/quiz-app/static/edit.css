@@ -1,0 +1,22 @@
+html, body {
+  margin: 0;
+}
+
+body {
+  background: rgb(232, 196, 146);
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+label {
+  display: block;
+}
+
+input[type='text'] {
+  width: 300px;
+}

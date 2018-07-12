@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="edit.css">
+  <title>Manage Questions</title>
+</head>
+<body>
+  <div>
+    <h1>Create new Question</h1>
+    <form id="add-question-form">
+      <label for="new-question">
+        <span>Question</span>
+        <input type="text" name="new-question" id="in-quest">
+      </label>
+      <label for="answer-one">
+        <span>#1</span>
+        <input type="text" name="answer-one" id="a-one">
+        <input type="radio" name="correct" data-id="one">
+      </label>
+      <label for="answer-two">
+        <span>#2</span>
+        <input type="text" name="answer-two" id="a-two">
+        <input type="radio" name="correct" data-id="two">
+      </label>
+      <label for="answer-three">
+        <span>#3</span>
+        <input type="text" name="answer-three" id="a-three">
+        <input type="radio" name="correct" data-id="three">
+      </label>
+      <label for="answer-four">
+        <span>#4</span>
+        <input type="text" name="answer-four" id="a-four">
+        <input type="radio" name="correct" data-id="four">
+      </label>
+      <button id='send-quest'>Send</button>
+    </form>
+
+  </div>
+  <script src="edit.js"></script>
+</body>
+</html>

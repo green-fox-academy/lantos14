@@ -49,9 +49,6 @@ app.get('/game', (req, res) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
 
 app.get('/questions', (req, res) => {
   let sql = `SELECT  * FROM questions;`;
@@ -71,6 +68,36 @@ app.get('/questions', (req, res) => {
     );
   });
 });
+
+app.post('/questions', (req, res) => {
+
+  let sqlPostQuestion = `INSERT INTO questions (question)
+  VALUES ('${req.body.question}');`
+
+  let sqlPostAnswers = `INSERT INTO answers (question_id, answer, is_correct) VALUES ((SELECT MAX(id) FROM questions), '${req.body.a1.text}', '${req.body.a1.correct}'), ((SELECT MAX(id) FROM questions), '${req.body.a2.text}', '${req.body.a2.correct}'), ((SELECT MAX(id) FROM questions), '${req.body.a3.text}', '${req.body.a3.correct}'), ((SELECT MAX(id) FROM questions), '${req.body.a4.text}', '${req.body.a4.correct}');`;
+
+  conn.query(sqlPostQuestion, (err, rows) => {
+
+    if (err) {
+      console.log(err);
+      res.status(500).send();
+      return;
+    }
+  });
+
+  conn.query(sqlPostAnswers, (err, rows) => {
+
+    if (err) {
+      console.log(err);
+      res.status(500).send();
+      return;
+    }
+  });
+  res.send({
+    message: `question inserted`,
+  });
+});
+
 // sub functions
 const parseAnswers = (rows, resultList) => {
   rows.forEach(row => {
@@ -82,3 +109,7 @@ const parseAnswers = (rows, resultList) => {
     })
   });
 }
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});

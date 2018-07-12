@@ -44,10 +44,15 @@ const populateDom = (resObj) => {
 getQuestion();
 
 content.addEventListener('click', (e) => {
-  colorAnswers();
-  handleScore(e.target);
-  setTimeout(getQuestion, 3000);
+
+    if (e.target.classList[0] === 'answers') {
+      colorAnswers();
+      handleScore(e.target);
+      setTimeout(getQuestion, 3000);
+    }
+  
 });
+
 
 // sub functions
 
@@ -68,8 +73,6 @@ const handleScore = (clickedAnswer) => {
 }
 
 function countDown(i) {
-  counter.innerText = i;
-
   setInterval(() => {
     if (counter.innerText === parseInt(counter.innerText) === '0') {
       clearInterval();
@@ -78,4 +81,5 @@ function countDown(i) {
       counter.innerText = parseInt(counter.innerText) - 1;
     }
   }, 1000);
+  countDown(i - 1);
 }
