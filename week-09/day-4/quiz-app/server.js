@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/game', (req, res) => {
-  let randomNum = Math.floor(Math.random() * 11);
+  let randomNum = Math.floor(Math.random() * 10 + 1);
   let sql = `SELECT  answers.question_id AS questionId, question, answers.id, answers.answer, answers.is_correct AS correct FROM questions INNER JOIN answers ON questions.id = answers.question_id WHERE questions.id = ${randomNum};`;
 
   conn.query(sql, (err, rows) => {

@@ -1,0 +1,37 @@
+body, html {
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgb(232, 196, 146);
+}
+
+#content {
+  background: rgb(254, 237, 237);
+  width: 600px;
+  height: 300px;
+  box-shadow: 2px 3px 10px gray;
+  border-radius: 10px;
+  padding: 30px;
+}
+
+.answers {
+  padding-left: 10px;
+  background: white;
+  box-shadow: 2px 3px 10px gray;
+  border-radius: 10px;
+  min-height: 30px;
+}
+
+.answers:hover {
+  background: rgb(242, 242, 129);
+  filter: brightness(110%);
+}
+
+.answers:active {
+  filter: brightness(95%);
+}
