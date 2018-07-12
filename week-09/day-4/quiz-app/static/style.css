@@ -11,6 +11,7 @@ body {
 }
 
 #content {
+  margin: 20px;
   background: rgb(254, 237, 237);
   width: 600px;
   height: 300px;
@@ -25,6 +26,7 @@ body {
   box-shadow: 2px 3px 10px gray;
   border-radius: 10px;
   min-height: 30px;
+  line-height: 30px;
 }
 
 .answers:hover {
@@ -34,4 +36,12 @@ body {
 
 .answers:active {
   filter: brightness(95%);
+}
+
+.green {
+  background: rgb(65, 211, 65);
+}
+
+.red {
+  background: rgb(255, 86, 86);
 }
