@@ -98,6 +98,21 @@ app.post('/questions', (req, res) => {
   });
 });
 
+app.delete('/questions/:id', (req, res) => {
+  let sql = `DELETE questions, answers FROM questions INNER JOIN answers ON answers.question_id = questions.id  WHERE questions.id = ${req.params.id};`;
+
+  conn.query(sql, (err, rows) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send();
+      return;
+    }
+    res.send({
+      message: `post has benn deleted at ID: ${req.params.id}`,
+    });
+  });
+});
+
 // sub functions
 const parseAnswers = (rows, resultList) => {
   rows.forEach(row => {

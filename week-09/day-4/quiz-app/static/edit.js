@@ -30,6 +30,7 @@ const getRadioValues = (inputs) => {
 }
 
 const fillDelList = () => {
+  deleteDiv.innerHTML = '';
   const httpQList = new XMLHttpRequest();
   httpQList.open('GET', 'http://localhost:3000/questions', true);
   httpQList.onload = () => {
@@ -54,13 +55,14 @@ const fillDelList = () => {
 // delete req
 const delReq = (id) => {
   const httpDelList = new XMLHttpRequest();
-  httpDelList.open('DELETE', `http://localhost:3000/posts/${id}`);
+  httpDelList.open('DELETE', `http://localhost:3000/questions/${id}`);
   httpDelList.send();
 }
 
 // filling up delete list 
 fillDelList();
 
+// event listeners
 btnEdit.addEventListener('click', (e) => {
   e.preventDefault();
   const httpPost = new XMLHttpRequest();
@@ -77,10 +79,13 @@ btnEdit.addEventListener('click', (e) => {
     a3: { text: postData[3], correct: checkRadioList[2] },
     a4: { text: postData[4], correct: checkRadioList[3] },
   }));
+
+  fillDelList();
 });
 
 deleteDiv.addEventListener('click', (e) => {
   if (e.target.dataset.idq) {
     delReq(e.target.dataset.idq);
+    fillDelList();
   }
 });
