@@ -53,6 +53,25 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
 
+app.get('/questions', (req, res) => {
+  let sql = `SELECT  * FROM questions;`;
+
+  conn.query(sql, (err, rows) => {
+
+    if (err) {
+      console.log(err);
+      res.status(500).send();
+      return;
+    }
+    // prepare answer
+
+    // send
+    res.json(
+      rows,
+    );
+  });
+});
+// sub functions
 const parseAnswers = (rows, resultList) => {
   rows.forEach(row => {
     resultList.push({
