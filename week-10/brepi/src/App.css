@@ -1,0 +1,32 @@
+@import '~antd/dist/antd.css';
+.beer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-gap: 2em;
+  margin: 10px 30px;
+}
+
+.beer-tile {
+  border: 3px solid black;
+  box-shadow: 2px 3px 4px black;
+  border-radius: 10px;
+  background: rgb(255, 255, 196);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  flex-wrap: wrap;
+  min-width: 230px;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+}
+
+.descr {
+  display: none;
+}
