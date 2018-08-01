@@ -23,30 +23,48 @@ app.get('/', (req, res) => {
 });
 
 app.get('/game', (req, res) => {
-  let randomNum = Math.floor(Math.random() * 10 + 1);
-  let sql = `SELECT answers.question_id AS questionId, question, answers.id, answers.answer, answers.is_correct AS correct FROM questions INNER JOIN answers ON questions.id = answers.question_id WHERE questions.id = ${randomNum};`;
+  let randomId = '';
 
-  conn.query(sql, (err, rows) => {
+  let sqlRandom = `SELECT questions.id FROM questions ORDER BY RAND() LIMIT 1;`;
+
+  conn.query(sqlRandom, (err, randNum) => {
 
     if (err) {
       console.log(err);
       res.status(500).send();
       return;
     }
-    // preparing the response
-    let answerList = [];
-    parseAnswers(rows, answerList);
 
-    let sortedRows = {
-      id: rows[0].questionId,
-      question: rows[0].question,
-      answers: answerList,
-    };
-    // send
-    res.json(
-      sortedRows,
-    );
+    randomId = randNum[0].id;
+    console.log('randNumRAND: ', randNum);
+    console.log('randomIdRAND: ', randomId);
+    let sql = `SELECT answers.question_id AS questionId, question, answers.id, answers.answer, answers.is_correct AS correct FROM questions INNER JOIN answers ON questions.id = answers.question_id WHERE questions.id = ${randomId};`;
+    console.log('randomIdSQL: ', randomId);
+  
+    conn.query(sql, (err, rows) => {
+      console.log('rows: ', rows);
+  
+      if (err) {
+        console.log(err);
+        res.status(500).send();
+        return;
+      }
+      // preparing the response
+      let answerList = [];
+      parseAnswers(rows, answerList);
+  
+      let sortedRows = {
+        id: rows[0].questionId,
+        question: rows[0].question,
+        answers: answerList,
+      };
+      // send
+      res.json(
+        sortedRows,
+      );
+    });
   });
+
 });
 
 
