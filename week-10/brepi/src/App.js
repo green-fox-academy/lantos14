@@ -16,7 +16,7 @@ class App extends Component {
 
   clearAllDescDisplay = () => {
     const beerCards = document.querySelectorAll('.beer-tile');
-    
+
     for (let i = 0; i < beerCards.length; i++) {
       const card = beerCards[i];
       card.children[0].style.display = 'block';
@@ -26,14 +26,24 @@ class App extends Component {
   }
 
   onBeerClicked = async (e) => {
-    await this.setState({ beerSelected: e.target.id });
-    const onClickedElement = document.querySelector(`#${this.state.beerSelected}`);
+    if (e.currentTarget.id === this.state.beerSelected) {
+      const onClickedElement = document.querySelector(`#${this.state.beerSelected}`);
+      onClickedElement.children[0].style.display = 'block';
+      onClickedElement.children[1].style.display = 'block';
+      onClickedElement.children[2].style.display = 'none';
+      this.setState( {beerSelected: -1} );
+    } else {
 
-    await this.clearAllDescDisplay()
-    
-    onClickedElement.children[0].style.display = 'none';
-    onClickedElement.children[1].style.display = 'none';
-    onClickedElement.children[2].style.display = 'block';
+      await this.setState({ beerSelected: e.currentTarget.id });
+
+      const onClickedElement = document.querySelector(`#${this.state.beerSelected}`);
+
+      await this.clearAllDescDisplay()
+
+      onClickedElement.children[0].style.display = 'block';
+      onClickedElement.children[1].style.display = 'none';
+      onClickedElement.children[2].style.display = 'block';
+    }
   }
 
   getBeers = () => {
@@ -47,19 +57,9 @@ class App extends Component {
     document.querySelector('.get-beer-btn').style.display = 'none';
   }
 
-  checkBeerCount = () => {
-    fetch(`https://api.punkapi.com/v2/beers`)
-      .then(response => response.json())
-      .then(parsedJson => {
-        this.setState({ beerList: parsedJson })
-      });
-  }
-
   handlePageClick = (page) => {
-    const actualPage = page;
-    console.log('actualPage: ', actualPage);
-    this.setState({ page: page });
-    this.getBeers();
+    this.setState({ page: page, beerSelected: -1 }, this.getBeers);
+    this.clearAllDescDisplay();
   }
 
   render() {
