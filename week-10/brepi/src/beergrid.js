@@ -11,7 +11,7 @@ const Beergrid = props => {
       <div className='beer-grid'>
         {props.list.map((e, i) => {
           return (
-            <Beer key={i} beer={e} index={i} />
+            <Beer key={i} beer={e} index={i} onBeerClicked={props.onBeerClicked} />
           )
         })}
       </div>

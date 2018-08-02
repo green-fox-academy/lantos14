@@ -11,6 +11,29 @@ class App extends Component {
     page: 1,
     perPage: 6,
     pageCount: 10,
+    beerSelected: -1,
+  }
+
+  clearAllDescDisplay = () => {
+    const beerCards = document.querySelectorAll('.beer-tile');
+    
+    for (let i = 0; i < beerCards.length; i++) {
+      const card = beerCards[i];
+      card.children[0].style.display = 'block';
+      card.children[1].style.display = 'block';
+      card.children[2].style.display = 'none';
+    }
+  }
+
+  onBeerClicked = async (e) => {
+    await this.setState({ beerSelected: e.target.id });
+    const onClickedElement = document.querySelector(`#${this.state.beerSelected}`);
+
+    await this.clearAllDescDisplay()
+    
+    onClickedElement.children[0].style.display = 'none';
+    onClickedElement.children[1].style.display = 'none';
+    onClickedElement.children[2].style.display = 'block';
   }
 
   getBeers = () => {
@@ -40,14 +63,13 @@ class App extends Component {
   }
 
   render() {
-
     return (
       <div className="App">
 
         <Header getBeers={this.getBeers} next={this.nextPage} prev={this.PrevPage} />
 
         <div className="pagination">
-          <Beergrid list={this.state.beerList} />
+          <Beergrid list={this.state.beerList} onBeerClicked={this.onBeerClicked} />
           <Pagination current={this.state.page} onChange={this.handlePageClick} total={50} />;
         </div>
       </div>
