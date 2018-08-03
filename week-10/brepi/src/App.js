@@ -70,7 +70,7 @@ class App extends Component {
 
         <div className="pagination">
           <Beergrid list={this.state.beerList} onBeerClicked={this.onBeerClicked} />
-          <Pagination current={this.state.page} onChange={this.handlePageClick} total={50} />;
+          <Pagination current={this.state.page} onChange={this.handlePageClick} total={200} />;
         </div>
       </div>
     );

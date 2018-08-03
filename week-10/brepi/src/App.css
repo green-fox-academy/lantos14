@@ -24,6 +24,9 @@ body {
   min-width: 230px;
   position: relative;
   overflow-y: scroll;
+  min-width: 450px;
+  min-height: 420px;
+  padding: 20px;
 }
 
 .App {
@@ -36,8 +39,7 @@ body {
 .descr {
   display: none;
   position: absolute;
-  top: 24px;
-  left: 0;
+  top: 100px;
   width: 100%;
   height: 100%;
   font-size: 20px;
@@ -47,7 +49,9 @@ body {
 }
 
 .ant-pagination {
-  padding: 0 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .ant-pagination-item {
